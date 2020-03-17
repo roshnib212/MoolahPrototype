@@ -7,11 +7,21 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Redirect } from 'react-router-dom';
 
-class HomePage extends React.Component {
-  state = {
-    username: null,
-    password: null,
-    redirect: false
+class LoginPage extends React.Component {
+
+  constructor(props) {
+     super(props);
+     this.state =
+      {
+        username: null,
+        password: null,
+        redirect: false
+      }
+
+  }
+  handleSubmit(event){
+    event.preventDefault();
+    this.setState({username: event.target.value, password: event.target.value});
   }
   setRedirect = () => {
     this.setState({
@@ -20,7 +30,7 @@ class HomePage extends React.Component {
   }
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to='/home' />
+      return <Redirect to="/profile" />
     }
   }
   handleUsernameChange = (e) => {
@@ -40,18 +50,18 @@ class HomePage extends React.Component {
           <h1 className="hometitle">Welcome to Moolah!</h1>
           <img src={Betsy} alt="betsythecow" />
           <br></br>
-          <Form onSubmit={this.handleSubmit}>
+          <Form onSubmit={(e) => this.handleSubmit(e)}>
             <Form.Group controlId="formGridName">
               <Form.Label>Username</Form.Label>
               <Form.Control required onChange={(e) => this.handleUsernameChange(e)} placeholder="Enter username" />
             </Form.Group>
             <Form.Group controlId="formGridName">
               <Form.Label>Password</Form.Label>
-              <Form.Control required onChange={(e) => this.handlePasswordChange(e)} placeholder="Enter password" />
+              <Form.Control required type="password" onChange={(e) => this.handlePasswordChange(e)} placeholder="Enter password" />
             </Form.Group>
           </Form>
           {this.renderRedirect()}
-          <Button onClick={this.setRedirect} variant="dark">Login</Button>
+          <Button type="submit" onClick={this.setRedirect} variant="dark">Login</Button>
           &nbsp;&nbsp;&nbsp;
           OR
           &nbsp;&nbsp;&nbsp;
@@ -62,4 +72,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+export default LoginPage;
