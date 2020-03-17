@@ -2,11 +2,15 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 8px;
+  border-radius: 25px;
   max-width: 100%;
-  height: 500px;
+  height: 250px;
 }
-
+.hometitle{
+  padding: 20px;
+  font-family: 'Comic Sans MS';
+  text-align: center;
+}
 .text{
   padding: 20px;
   color: #464646;
