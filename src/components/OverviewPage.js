@@ -138,17 +138,20 @@ lineState = {
 
   render(){
     return (
-      <div style={{backgroundColor:'#DFF3F7', height: '1800px'}}>
+      <div style={{backgroundColor:'#DFF3F7', height: '1800px'}} className="text-center">
         <MoolahNavBar />
+	<br></br>
+	<h2>Your Financial Overview</h2>
       <MDBContainer>
-        <h3 className="mt-5">Financial Summary</h3>
-	    Your Spending Breakdown
+        <h3 className="mt-5">Spending Breakdown</h3>
         <Pie data={this.pieState.dataPie} options={{ responsive: true }} />
       </MDBContainer>
+	<br></br>
       <MDBContainer>
         <h3 className="mt-5">Spending vs Earnings</h3>
         <Bar data={this.barState.dataBar} options={this.barState.barChartOptions} />
       </MDBContainer>
+	<br></br>
 <MDBContainer>
         <h3 className="mt-5">Savings</h3>
         <Line data={this.lineState.dataLine} options={{ responsive: true }} />
