@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../stylesheets/home.css';
 import MoolahNavBar from './MoolahNavBar.js';
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../node_modules/video-react/dist/video-react.css";
 import ReactPlayer from "react-player";
@@ -14,7 +12,7 @@ class TutorialsPage extends React.Component{
       <div style={{backgroundColor:'#DFF3F7'}}>
         <MoolahNavBar />
         <br></br>
-        <h2 style={{paddingLeft: '600px', paddingBottom: '100px'}}>Financial Tutorials</h2>
+        <h2 style={{paddingLeft: '600px', paddingBottom: '100px', backgroundColor: ""}}>Financial Tutorials</h2>
         <div style={{backgroundColor:'#DFF3F7', paddingRight:'200px', paddingLeft: '200px', display: 'grid', gridTemplateColumns: '500px 500px',
         gridGap: '20px', borderRadius: '5px', columnCount: 2}}>
          
@@ -23,7 +21,7 @@ class TutorialsPage extends React.Component{
             width="500px"
             url="https://www.youtube.com/watch?v=5DXKOlr7SeI"
             />
-            <h6 style={{paddingLeft: '150px', paddingTop: '10px', paddingBottom: '10px'}}>Budgeting Expenses</h6>
+            <h6 style={{paddingLeft: '160px', paddingTop: '10px', paddingBottom: '10px'}}>Budgeting Expenses</h6>
             </div>
 
           <div><ReactPlayer
