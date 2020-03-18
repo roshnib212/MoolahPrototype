@@ -7,6 +7,7 @@ import OverviewPage from './components/OverviewPage.js';
 import BudgetPage from './components/BudgetPage.js';
 import StudentLoansPage from './components/StudentLoansPage.js';
 import TutorialsPage from './components/TutorialsPage.js';
+import RegisterAccountPage from './components/RegisterAccountPage.js';
 
 
 import {
@@ -21,6 +22,9 @@ ReactDOM.render(
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
       <Switch>
+        <Route path="/register">
+          <RegisterAccountPage />
+        </Route>
         <Route path="/profile">
           <ProfilePage />
         </Route>
