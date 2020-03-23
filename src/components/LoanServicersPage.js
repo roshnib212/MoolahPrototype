@@ -92,8 +92,8 @@ class LoanServicersPage extends React.Component{
         <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}} className="text-left">
           {this.state.listServicers.map(servicer => (
             <Card>
+              <Card.Header style={{backgroundColor: '#D6DBDF'}}>{servicer}</Card.Header>
               <Card.Body>
-                <Card.Title>{servicer}</Card.Title>
                 <Card.Text>
                   <p style={{margin: 0}}>{loanA}</p>
                   <p style={{margin: 0}}>{loanB}</p>
@@ -122,8 +122,8 @@ class LoanServicersPage extends React.Component{
         <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}} className="text-left">
           {this.state.listLenders.map(lender => (
             <Card>
+              <Card.Header style={{backgroundColor: '#D6DBDF'}}>{lender}</Card.Header>
               <Card.Body>
-                <Card.Title>{lender}</Card.Title>
                 <Card.Text>
                   <p style={{margin: 0}}>{loanA}</p>
                   <p style={{margin: 0}}>{loanB}</p>
