@@ -5,10 +5,13 @@ import LoginPage from './components/LoginPage.js';
 import ProfilePage from './components/ProfilePage.js';
 import OverviewPage from './components/OverviewPage.js';
 import BudgetPage from './components/BudgetPage.js';
-import StudentLoansPage from './components/StudentLoansPage.js';
 import TutorialsPage from './components/TutorialsPage.js';
 import RegisterAccountPage from './components/RegisterAccountPage.js';
-
+import LoanServicersPage from './components/LoanServicersPage.js';
+import LoanSummaryPage from './components/LoanSummaryPage.js';
+import LoanStatusPage from './components/LoanStatusPage.js';
+import LoanRepaymentPage from './components/LoanRepaymentPage.js';
+import LoanForgivenessPage from './components/LoanForgivenessPage.js';
 
 import {
   BrowserRouter as Router,
@@ -34,8 +37,20 @@ ReactDOM.render(
         <Route path="/budget">
           <BudgetPage />
         </Route>
-        <Route path="/studentloans">
-          <StudentLoansPage />
+        <Route path="/loanservicers">
+          <LoanServicersPage />
+        </Route>
+        <Route path="/loansummary">
+          <LoanSummaryPage />
+        </Route>
+        <Route path="/loanstatus">
+          <LoanStatusPage />
+        </Route>
+        <Route path="/loanrepayment">
+          <LoanRepaymentPage />
+        </Route>
+        <Route path="/loanforgiveness">
+          <LoanForgivenessPage />
         </Route>
         <Route path="/tutorials">
           <TutorialsPage />
