@@ -23,11 +23,7 @@
     "react-dom": "^16.12.0",
     "react-paypal-button-v2": "^2.6.1",
     "react-router-dom": "^5.1.2",
-<<<<<<< HEAD
     "react-scripts": "^3.4.0",
-=======
-    "react-scripts": "3.3.0",
->>>>>>> b1c7dd7d212d6e03e1b65dbfdb0e7218bd52ce95
     "react-select": "^3.0.8",
     "react-select-country-list": "^2.1.2"
   },
