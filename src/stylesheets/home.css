@@ -11,6 +11,20 @@ img {
   font-family: 'Comic Sans MS';
   text-align: center;
 }
+
+.registertitle{
+  padding: 20px;
+  font-family: 'Georgia';
+  text-align: center;
+}
+.navbar-custom{
+  background-color: #40e4cc;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text{
+  color: white;
+}
 .text{
   padding: 20px;
   color: #464646;

@@ -65,8 +65,8 @@ class RegisterAccountPage extends React.Component{
     }
     return(
       <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}}>
-        <h1 className="hometitle">Register</h1>
-        <ProgressBar animated now={33} />
+        <h1 className="registertitle">Register</h1>
+        <ProgressBar striped variant="info" now={33} />
         <br></br>
         <Form>
           <Form.Row>
@@ -104,7 +104,7 @@ class RegisterAccountPage extends React.Component{
             </Form.Group>
           </Form.Row>
         </Form>
-        <Button onClick={this.handleNextPage} variant="primary">Next Page</Button>
+        <Button onClick={this.handleNextPage} variant="info">Next Page</Button>
       </div>
     )
   }
@@ -139,8 +139,8 @@ class SecondRegisterPage extends React.Component{
     }
     return(
       <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}}>
-        <h1 className="hometitle">Register</h1>
-        <ProgressBar animated now={66} />
+        <h1 className="registertitle">Register</h1>
+        <ProgressBar striped variant="info" now={66} />
         <br></br>
         <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}} className="text-center">
           <Row>
@@ -168,7 +168,7 @@ class SecondRegisterPage extends React.Component{
             </Col>
           </Row>
           <br></br>
-          <Button onClick={this.handleNextPage} variant="primary">Next Page</Button>
+          <Button onClick={this.handleNextPage} variant="info">Next Page</Button>
         </div>
       </div>
     );
@@ -210,8 +210,8 @@ class ThirdRegisterPage extends React.Component{
     ]
     return(
       <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}}>
-        <h1 className="hometitle">Register</h1>
-        <ProgressBar animated now={99} />
+        <h1 className="registertitle">Register</h1>
+        <ProgressBar striped variant="info" now={99} />
         <br></br>
         <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}} className="text-center">
           <Row>
@@ -230,7 +230,9 @@ class ThirdRegisterPage extends React.Component{
           </Row>
           <br></br>
           {this.renderRedirect()}
-          <Button onClick={this.setRedirect} variant="primary">Complete Registration!</Button>
+          <Button variant="dark">Sign-in to Bank</Button>
+          &nbsp;&nbsp;&nbsp;
+          <Button onClick={this.setRedirect} variant="info">Complete Registration!</Button>
         </div>
       </div>
     )
