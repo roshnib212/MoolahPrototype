@@ -150,7 +150,6 @@ class EditModal extends React.Component{
   }
   handleSubmit(event){
     event.preventDefault();
-    console.log(this.state.marital_status);
     this.props.onSubmit(this.state.marital_status, this.state.education_level,
        this.state.credit_score, this.state.income, this.state.residential_status, this.state.household_size);
   }
