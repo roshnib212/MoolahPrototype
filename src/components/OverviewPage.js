@@ -138,7 +138,7 @@ lineState = {
 
   render(){
     return (
-      <div style={{backgroundColor:'#DFF3F7', height: '1800px'}} className="text-center">
+      <div style={{backgroundColor:'#DFF3F7', height: '1800px', overflow: 'auto', paddingBottom: '75px'}} className="text-center">
         <MoolahNavBar />
 	<br></br>
 	<h2>Your Financial Overview</h2>

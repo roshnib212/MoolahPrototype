@@ -83,16 +83,16 @@ class LoanServicersPage extends React.Component{
 
   render(){
     return (
-      <div style={{backgroundColor:'#DFF3F7', height: '100%'}} className="text-center">
+      <div style={{backgroundColor:'#DFF3F7', height: '100%', overflow: 'auto', paddingBottom: '75px'}} className="text-center">
         <MoolahNavBar />
         <br></br>
         <h3>Federal Student Aid Servicers</h3>
         <br></br>
-        <div style={{backgroundColor:'#DFF3F7'}} className="text-left">
+        <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}} className="text-left">
           {this.state.listServicers.map(servicer => (
             <Card>
+              <Card.Header style={{backgroundColor: '#D6DBDF'}}>{servicer}</Card.Header>
               <Card.Body>
-                <Card.Title>{servicer}</Card.Title>
                 <Card.Text>
                   <p style={{margin: 0}}>{loanA}</p>
                   <p style={{margin: 0}}>{loanB}</p>
@@ -101,9 +101,11 @@ class LoanServicersPage extends React.Component{
             </Card>
           ))}
         </div>
+        <br></br>
         <div class="d-flex justify-content-center">
           <Row>
             <Button style = {{margin: 0, alignSelf: 'center'}} variant="danger" onClick={this.handleAddNewServicer}>Remove Loan Servicer</Button>
+            &nbsp;&nbsp;&nbsp;
             <Button style = {{margin: 0, alignSelf: 'center'}} variant="primary" onClick={this.handleAddNewServicer}>Add Loan Servicer</Button>
           </Row>
         </div>
@@ -116,11 +118,11 @@ class LoanServicersPage extends React.Component{
         <br></br>
         <h3>Private Student Loan Lenders</h3>
         <br></br>
-        <div style={{backgroundColor:'#DFF3F7'}} className="text-left">
+        <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}} className="text-left">
           {this.state.listLenders.map(lender => (
             <Card>
+              <Card.Header style={{backgroundColor: '#D6DBDF'}}>{lender}</Card.Header>
               <Card.Body>
-                <Card.Title>{lender}</Card.Title>
                 <Card.Text>
                   <p style={{margin: 0}}>{loanA}</p>
                   <p style={{margin: 0}}>{loanB}</p>
@@ -129,9 +131,11 @@ class LoanServicersPage extends React.Component{
             </Card>
           ))}
         </div>
+        <br></br>
         <div class="d-flex justify-content-center">
           <Row>
             <Button style = {{margin: 0, alignSelf: 'center'}} variant="danger" onClick={this.handleAddNewLender}>Remove Loan Lender</Button>
+            &nbsp;&nbsp;&nbsp;
             <Button style = {{margin: 0, alignSelf: 'center'}} variant="primary" onClick={this.handleAddNewLender}>Add Loan Lender</Button>
           </Row>
         </div>
