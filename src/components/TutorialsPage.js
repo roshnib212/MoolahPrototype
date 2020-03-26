@@ -81,6 +81,10 @@ class TutorialsPage extends React.Component{
             </div>
 
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0894adfd55723e3711ba3a4806dd537707f1a20
       </div>
     );
   }
