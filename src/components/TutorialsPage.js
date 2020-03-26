@@ -81,7 +81,6 @@ class TutorialsPage extends React.Component{
             </div>
 
         </div>
-
       </div>
     );
   }
