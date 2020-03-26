@@ -1,0 +1,14 @@
+.side-nav{
+  font-size: 15px;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.note{
+  font-style: italic;
+}
+p{
+  font-family: 'Optima';
+}
+li{
+  font-family: 'Optima';
+}
