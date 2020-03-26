@@ -75,7 +75,7 @@ class TutorialsPage extends React.Component{
             <div><ReactPlayer
             height="300px"
             width="500px"
-            url="https://www.youtube.com/watch?v=e-LpPTnme_M"
+            url="https://www.youtube.com/watch?v=Iat9AuCl_nU"
             />
             <h6 style={{paddingLeft: '160px', paddingTop: '10px', paddingBottom: '10px'}}>Student Loan Alleviation</h6>
             </div>
