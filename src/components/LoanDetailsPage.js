@@ -5,15 +5,15 @@ import MoolahNavBar from './MoolahNavBar.js';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class LoanStatusPage extends React.Component{
+class LoanDetailsPage extends React.Component{
   render(){
     return (
       <div style={{backgroundColor:'#DFF3F7'}}>
         <MoolahNavBar />
-        LoanStatusPage!
+        LoanDetailsPage!
       </div>
     );
   }
 }
 
-export default LoanStatusPage;
+export default LoanDetailsPage;
