@@ -49,7 +49,6 @@ class LoanServicersPage extends React.Component{
     this.setState({newServicerModalShow: true});
   }
   handleSubmitNewServicerForm(ServicerName, ServicerUsername, ServicerPassword){
-    console.log(ServicerName);
     const newListServicers = this.state.listServicers.concat(ServicerName);
     this.setState(
       {
@@ -69,7 +68,6 @@ class LoanServicersPage extends React.Component{
     this.setState({newLenderModalShow: true});
   }
   handleSubmitNewLenderForm(LenderName, LenderUsername, LenderPassword){
-    console.log(LenderName);
     const newListLenders = this.state.listLenders.concat(LenderName);
     this.setState(
       {
@@ -167,7 +165,6 @@ class NewServicerModal extends React.Component{
   }
   handleSubmit(event){
     event.preventDefault();
-    console.log(this.state.ServicerName);
     this.props.onSubmit(this.state.ServicerName, this.state.ServicerUsername, this.state.ServicerPassword);
   }
   handleServicerNameChange(event){
@@ -271,7 +268,6 @@ class NewLenderModal extends React.Component{
   }
   handleSubmit(event){
     event.preventDefault();
-    console.log(this.state.LenderName);
     this.props.onSubmit(this.state.LenderName, this.state.LenderUsername, this.state.LenderPassword);
   }
   handleLenderNameChange(event){
