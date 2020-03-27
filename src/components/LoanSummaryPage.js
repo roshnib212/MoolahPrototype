@@ -10,26 +10,19 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const accruedInterest = "53.08"
-const principalBalance = "15,194.59"
-const estimatedMonthlyPayment_Amount = "137.10"
-const estimatedMonthlyPayment_Start = "12/26/2020"
-const lastDisbursement_Amount = "3,239.93"
-const lastDisbursement_Date = "01/14/2020"
-const studentStatus = "In School"
-const graduationDate = "05/05/2022"
-
 class LoanSummaryPage extends React.Component{
 
   constructor(props){
     super(props);
     this.state = {
-      AccruedInterest: null,
-      PrincipalBalance: null,
-      EstimatedMonthlyPayment_Amount: null,
-      EstimatedMonthlyPayment_Start: null,
-      LastDisbursement: null,
-      StudentStatus: null,
+      AccruedInterest: "55.00",
+      PrincipalBalance: "20,000",
+      EstimatedMonthlyPayment_Amount: "140.00",
+      EstimatedMonthlyPayment_Start: "12/26/2020",
+      LastDisbursement_Amount: "3,250.00",
+      lastDisbursement_Date: "01/14/2020",
+      StudentStatus: "In School",
+      GraduationDate: "05/05/2022",
 
       redirectPayments: false,
       redirectLoanDetails: false
@@ -63,30 +56,32 @@ class LoanSummaryPage extends React.Component{
           <ListGroup variant="flush">
             <ListGroup.Item>
               <Row>
-                <Col style={{paddingLeft: 10}}> Accrued Interest: </Col>
-                <Col> ${accruedInterest} </Col>
-              </Row>
-            </ListGroup.Item>
-              <Row>
-                <Col style={{paddingLeft: 30}}> Principal Balance: </Col>
-                <Col style={{paddingLeft: 0}}> ${principalBalance} </Col>
-              </Row>
-            <ListGroup.Item>
-              <Row>
-                <Col style={{paddingLeft: 10}}> Estimated Monthly Payment: </Col>
-                <Col> ${estimatedMonthlyPayment_Amount} on {estimatedMonthlyPayment_Start} </Col>
+                <Col> Accrued Interest: </Col>
+                <Col> ${this.state.AccruedInterest} </Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
-                <Col style={{paddingLeft: 10}}> Last Disbursement: </Col>
-                <Col> ${lastDisbursement_Amount} on {lastDisbursement_Date} </Col>
+                <Col> Principal Balance: </Col>
+                <Col> ${this.state.PrincipalBalance} </Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
-                <Col style={{paddingLeft: 10}}> Student Status: </Col>
-                <Col> {studentStatus} </Col>
+                <Col> Estimated Monthly Payment: </Col>
+                <Col> ${this.state.EstimatedMonthlyPayment_Amount} on {this.state.EstimatedMonthlyPayment_Start} </Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col> Last Disbursement: </Col>
+                <Col> ${this.state.LastDisbursement_Amount} on {this.state.lastDisbursement_Date} </Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col> Student Status: </Col>
+                <Col> {this.state.StudentStatus} </Col>
               </Row>
             </ListGroup.Item>
           </ListGroup>
