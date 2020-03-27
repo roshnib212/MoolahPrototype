@@ -92,9 +92,9 @@ class LoanSummaryPage extends React.Component{
         {this.renderRedirectLoanDetails()}
         <div class="d-flex justify-content-center">
           <Row>
-            <Button style = {{margin: 0, alignSelf: 'center'}} variant="success" onClick={this.setRedirectPayments}>MAKE A PAYMENT</Button>
+            <Button style = {{margin: 0, alignSelf: 'center'}} variant="success" onClick={this.setRedirectPayments}>Make A Payment</Button>
             &nbsp;&nbsp;&nbsp;
-            <Button style = {{margin: 0, alignSelf: 'center'}} variant="info" onClick={this.setRedirectLoanDetails}>VIEW LOAN DETAILS</Button>
+            <Button style = {{margin: 0, alignSelf: 'center'}} variant="info" onClick={this.setRedirectLoanDetails}>View Loan Details</Button>
           </Row>
         </div>
 
