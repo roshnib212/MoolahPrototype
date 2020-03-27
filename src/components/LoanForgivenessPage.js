@@ -254,7 +254,7 @@ class LoanForgivenessPage extends React.Component{
 class ApplyForLoanForgiveness extends React.Component{
   render(){
     return(
-      <div style={{backgroundColor:'#DFF3F7', overflow:'auto'}}>
+      <div style={{backgroundColor:'#DFF3F7', overflow:'auto', paddingBottom: '50px'}}>
         <MoolahNavBar />
         <br></br>
         <div style={{paddingLeft: '300px', paddingRight: '300px'}}>
@@ -381,7 +381,52 @@ class ApplyForLoanForgiveness extends React.Component{
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="1">
-                <Card.Body>Hello! I'm another body</Card.Body>
+                <Card.Body>
+                <div className="form-cards">
+                  <p>General Forbearance</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/GeneralForbearance.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>Medical or Dental Internship/Residency, National Guard, and DoD Student Loan Repayment</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/MedicalorDentalInternshipResidencyNationalGuardandDoDStudentLoanRepayment.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>Student Loan Debt Burden Forbearance</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/StudentLoanDebtBurdenForbearance.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>Teacher Forbearance</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/TeacherForbearance.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                </Card.Body>
               </Accordion.Collapse>
             </Card>
             <Card style={{borderRadius: '8px'}}>
@@ -393,7 +438,128 @@ class ApplyForLoanForgiveness extends React.Component{
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="2">
-                <Card.Body>Hello! I'm the body
+                <Card.Body>
+                <div className="form-cards">
+                  <p>False Certification - Disqualifying Status Discharge</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/FalseCertificationDisqualifyingStatusDischarge.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>False Certification - Unauthorized Signature Discharge</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/FalseCertificationUnauthorizedSignatureDischarge.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>False Certification of Ability to Benefit Discharge</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/FalseCertificationofAbilitytoBenefitDischarge.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>PSLF: Application for Forgiveness</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/PSLFApplicationforForgiveness.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>Public Service Loan Forgiveness Employment Certification Form</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/PublicServiceLoanForgivenessEmploymentCertificationForm.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>School Closure Discharge</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/SchoolClosureDischarge.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>Teacher Loan Forgiveness</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/TeacherLoanForgiveness.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>Total and Permanent Disability - Applicant Representative Designation</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/TotalandPermanentDisabilityApplicantRepresentativeDesignation.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>Total and Permanent Disability - Discharge Application</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/TotalandPermanentDisabilityDischargeApplication.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>Total and Permanent Disability - Post Discharge Monitoring</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/TotalandPermanentDisabilityPostDischargeMonitoring.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>Unpaid Refund Discharge</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/UnpaidRefundDischarge.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
@@ -406,7 +572,30 @@ class ApplyForLoanForgiveness extends React.Component{
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="3">
-                <Card.Body>Hello! I'm the body</Card.Body>
+                <Card.Body>
+                <div className="form-cards">
+                  <p>Loan Rehabilitation: Income and Expense</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/LoanRehabilitationIncomeandExpense.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                <div className="form-cards">
+                  <p>Loan Rehabilitation: Income and Expense Instructions</p>
+                  <FontAwesomeIcon icon={faFilePdf} />
+                  &nbsp;&nbsp;&nbsp;
+                  <DownloadLink
+                    label="Download Application (PDF)"
+                    filename="../ForgivenessAppsPDFs/LoanRehabilitationIncomeandExpenseInstructions.pdf"
+                    exportFile={() => "My cached data"}
+                  />
+                </div>
+                <br></br>
+                </Card.Body>
               </Accordion.Collapse>
             </Card>
           </Accordion>
