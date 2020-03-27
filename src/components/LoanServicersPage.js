@@ -49,7 +49,6 @@ class LoanServicersPage extends React.Component{
     this.setState({newServicerModalShow: true});
   }
   handleSubmitNewServicerForm(ServicerName, ServicerUsername, ServicerPassword){
-    console.log(ServicerName);
     const newListServicers = this.state.listServicers.concat(ServicerName);
     this.setState(
       {
