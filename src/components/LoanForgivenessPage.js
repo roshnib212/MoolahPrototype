@@ -5,18 +5,34 @@ import MoolahNavBar from './MoolahNavBar.js';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
-import '../stylesheets/forgiveness.css'
+import '../stylesheets/forgiveness.css';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 class LoanForgivenessPage extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      renderApps: false
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(event){
+    this.setState({renderApps: true});
+  }
   render(){
+    if(this.state.renderApps===true){
+      return <ApplyForLoanForgiveness />
+    }
     return (
       <div style={{backgroundColor:'#DFF3F7', overflow:'auto'}}>
         <MoolahNavBar />
         <br></br>
-        <div style={{paddingRight: '50px'}} className="float-right">
+        <div style={{paddingRight: '50px', position: '-webkit-sticky', position: 'sticky', top: 0}} className="float-right">
           <br></br>
           <br></br>
-          <div style={{position: 'fixed'}}>
             <nav>
               <ul className="side-nav">
                 <li><a href="#differences">Differences Between Forgiveness, Cancellation, and Discharge</a></li>
@@ -40,16 +56,15 @@ class LoanForgivenessPage extends React.Component{
                 <li><a href="#denied">My Application Was Denied</a></li>
               </ul>
             </nav>
-          </div>
         </div>
-        <div style={{paddingLeft: '75px'}} className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div style={{paddingLeft: '75px', paddingRight: '500px'}}>
           <h3>Student Loan Forgiveness</h3>
           <p>
            In certain situations, you can have your federal student loans forgiven,
            canceled, or discharged. Learn more about the types of forgiveness and
            whether you qualify due to your job or other circumstances.
           </p>
-          <Button variant="info">Apply for Student Loan Forgiveness</Button>
+          <Button onClick={this.handleClick} variant="info">Apply for Student Loan Forgiveness</Button>
           <br></br>
           <br></br>
           <h4 id="differences">Differences Between Forgiveness, Cancellation, and Discharge</h4>
@@ -231,6 +246,70 @@ class LoanForgivenessPage extends React.Component{
         </div>
       </div>
     );
+  }
+}
+class ApplyForLoanForgiveness extends React.Component{
+  render(){
+    return(
+      <div style={{backgroundColor:'#DFF3F7', overflow:'auto'}}>
+        <MoolahNavBar />
+        <br></br>
+        <div style={{paddingLeft: '300px', paddingRight: '300px'}}>
+          <h3 className="text-center">Apply For Student Loan Forgiveness</h3>
+          <br></br>
+          <Accordion>
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+                  Deferment
+                  &nbsp;&nbsp;&nbsp;
+                  <FontAwesomeIcon icon={faAngleDown} />
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body>Hello! I'm the body</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Card.Header} variant="link" eventKey="1">
+                  Forbearance
+                  &nbsp;&nbsp;&nbsp;
+                  <FontAwesomeIcon icon={faAngleDown} />
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body>Hello! I'm another body</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Card.Header} variant="link" eventKey="2">
+                  Discharge and Forgiveness
+                  &nbsp;&nbsp;&nbsp;
+                  <FontAwesomeIcon icon={faAngleDown} />
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="2">
+                <Card.Body>Hello! I'm the body</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+                  Loan Rehabilitation
+                  &nbsp;&nbsp;&nbsp;
+                  <FontAwesomeIcon icon={faAngleDown} />
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body>Hello! I'm the body</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+        </div>
+      </div>
+    )
   }
 }
 
