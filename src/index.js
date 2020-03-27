@@ -9,7 +9,7 @@ import TutorialsPage from './components/TutorialsPage.js';
 import RegisterAccountPage from './components/RegisterAccountPage.js';
 import LoanServicersPage from './components/LoanServicersPage.js';
 import LoanSummaryPage from './components/LoanSummaryPage.js';
-import LoanStatusPage from './components/LoanStatusPage.js';
+import LoanDetailsPage from './components/LoanDetailsPage.js';
 import LoanRepaymentPage from './components/LoanRepaymentPage.js';
 import LoanForgivenessPage from './components/LoanForgivenessPage.js';
 
@@ -43,8 +43,8 @@ ReactDOM.render(
         <Route path="/loansummary">
           <LoanSummaryPage />
         </Route>
-        <Route path="/loanstatus">
-          <LoanStatusPage />
+        <Route path="/loandetails">
+          <LoanDetailsPage />
         </Route>
         <Route path="/loanrepayment">
           <LoanRepaymentPage />

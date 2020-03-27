@@ -23,9 +23,10 @@ class MoolahNavBar extends React.Component{
            <Nav.Link href="/overview">Overview</Nav.Link>
            <Nav.Link href="/budget">Budget</Nav.Link>
            <NavDropdown title="Student Loans" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/loanservicers">Loan Servicers/Providers</NavDropdown.Item>
               <NavDropdown.Item href="/loansummary">Loan Summary</NavDropdown.Item>
-              <NavDropdown.Item href="/loanstatus">Loan Status</NavDropdown.Item>
+              <NavDropdown.Item href="/loanservicers">Loan Servicers/Providers</NavDropdown.Item>
+              <NavDropdown.Item href="/loandetails">Loan Details</NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item href="/loanrepayment">Loan Repayment</NavDropdown.Item>
               <NavDropdown.Item href="/loanforgiveness">Loan Forgiveness</NavDropdown.Item>
            </NavDropdown>
