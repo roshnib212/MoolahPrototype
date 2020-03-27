@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Accordion from 'react-bootstrap/Accordion';
+import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class LoanDetailsPage extends React.Component{
@@ -22,8 +23,19 @@ class LoanDetailsPage extends React.Component{
       PaymentAmount: "0.00",
       DueDate: "12/25/2022",
 
-      redirectPayments: false,
-      redirectLoanDetails: false
+      Loan01_DueDate: "12/26/2022",
+      Loan01_LoanStatus: "IN SCHOOL",
+      Loan01_LoanType: "DIRECT SUB",
+      Loan01_OriginalAmount: "$5,000",
+      Loan01_InterestRate: "%4.450",
+      Loan01_AccruedInterestRate: "$0.00",
+      Loan01_CapitalizedInterest: "$0.00",
+      Loan01_LenderName: "DIRECT LOANS",
+      Loan01_OutstandingBalance: "$5,000.00",
+      Loan01_PrincipalBalance: "$5,000.00",
+      Loan01_Disbursements: ["$2,000.00 on 08/18/2017", "$3,000.00 on 01/09/2018"],
+
+      Loan02_Disbursements: ["$5,000.00 on 08/18/2017", "$5,000.00 on 01/09/2018"]
     }
   }
 
@@ -60,11 +72,151 @@ class LoanDetailsPage extends React.Component{
                 <Card>
                   <Card.Header>
                     <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                      Show Groups and Loan Details
+                      Show Loan Details
                     </Accordion.Toggle>
                   </Card.Header>
                   <Accordion.Collapse eventKey="0">
-                    <Card.Body>Hello! I'm the body</Card.Body>
+                    <Card.Body>
+                      <Row style={{backgroundColor: '#87ceeb'}}><Col>Loan 1</Col></Row>
+                      <Row>
+                        <Col>
+                          <Table>
+                            <tbody>
+                              <tr>
+                                <th>Due Date:</th>
+                                <td>{this.state.Loan01_DueDate}</td>
+                              </tr>
+                              <tr>
+                                <th>Loan Status:</th>
+                                <td>{this.state.Loan01_LoanStatus}</td>
+                              </tr>
+                              <tr>
+                                <th>Loan Type:</th>
+                                <td>{this.state.Loan01_LoanType}</td>
+                              </tr>
+                              <tr>
+                                <th>Original Loan Amount:</th>
+                                <td>{this.state.Loan01_OriginalAmount}</td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </Col>
+                        <Col>
+                          <Table>
+                            <tbody>
+                              <tr>
+                                <th>Interest Rate:</th>
+                                <td>{this.state.Loan01_InterestRate}</td>
+                              </tr>
+                              <tr>
+                                <th>Accrued Interest:</th>
+                                <td>{this.state.Loan01_AccruedInterestRate}</td>
+                              </tr>
+                              <tr>
+                                <th>Capitalized Interest:</th>
+                                <td>{this.state.Loan01_CapitalizedInterest}</td>
+                              </tr>
+                              <tr>
+                                <th>Lender Name:</th>
+                                <td>{this.state.Loan01_LenderName}</td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </Col>
+                        <Col>
+                          <Table>
+                            <tbody>
+                              <tr>
+                                <th>Outstanding Balance:</th>
+                                <td>{this.state.Loan01_OutstandingBalance}</td>
+                              </tr>
+                              <tr>
+                                <th>Principal Balance:</th>
+                                <td>{this.state.Loan01_PrincipalBalance}</td>
+                              </tr>
+                              <tr>
+                                <th>Disbursements:</th>
+                                <td>
+                                  {this.state.Loan01_Disbursements.map(disbursement => (
+                                    <p>{disbursement}</p>
+                                  ))}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </Col>
+                      </Row>
+
+                      <Row style={{backgroundColor: '#87ceeb'}}><Col>Loan 2</Col></Row>
+                      <Row>
+                        <Col>
+                          <Table>
+                            <tbody>
+                              <tr>
+                                <th>Due Date:</th>
+                                <td>{this.state.Loan01_DueDate}</td>
+                              </tr>
+                              <tr>
+                                <th>Loan Status:</th>
+                                <td>{this.state.Loan01_LoanStatus}</td>
+                              </tr>
+                              <tr>
+                                <th>Loan Type:</th>
+                                <td>{this.state.Loan01_LoanType}</td>
+                              </tr>
+                              <tr>
+                                <th>Original Loan Amount:</th>
+                                <td>$10,000</td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </Col>
+                        <Col>
+                          <Table>
+                            <tbody>
+                              <tr>
+                                <th>Interest Rate:</th>
+                                <td>{this.state.Loan01_InterestRate}</td>
+                              </tr>
+                              <tr>
+                                <th>Accrued Interest:</th>
+                                <td>{this.state.Loan01_AccruedInterestRate}</td>
+                              </tr>
+                              <tr>
+                                <th>Capitalized Interest:</th>
+                                <td>{this.state.Loan01_CapitalizedInterest}</td>
+                              </tr>
+                              <tr>
+                                <th>Lender Name:</th>
+                                <td>{this.state.Loan01_LenderName}</td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </Col>
+                        <Col>
+                          <Table>
+                            <tbody>
+                              <tr>
+                                <th>Outstanding Balance:</th>
+                                <td>$10,000</td>
+                              </tr>
+                              <tr>
+                                <th>Principal Balance:</th>
+                                <td>$10,000</td>
+                              </tr>
+                              <tr>
+                                <th>Disbursements:</th>
+                                <td>
+                                  {this.state.Loan02_Disbursements.map(disbursement => (
+                                    <p>{disbursement}</p>
+                                  ))}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </Col>
+                      </Row>
+                    </Card.Body>
                   </Accordion.Collapse>
                 </Card>
               </Accordion>
@@ -97,11 +249,81 @@ class LoanDetailsPage extends React.Component{
                 <Card>
                   <Card.Header>
                     <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                      Show Groups and Loan Details
+                      Show Loan Details
                     </Accordion.Toggle>
                   </Card.Header>
                   <Accordion.Collapse eventKey="0">
-                    <Card.Body>Hello! I'm the body</Card.Body>
+                    <Card.Body>
+                      <Row style={{backgroundColor: '#87ceeb'}}><Col>Loan 1</Col></Row>
+                      <Row>
+                        <Col>
+                          <Table>
+                            <tbody>
+                              <tr>
+                                <th>Due Date:</th>
+                                <td>{this.state.Loan01_DueDate}</td>
+                              </tr>
+                              <tr>
+                                <th>Loan Status:</th>
+                                <td>{this.state.Loan01_LoanStatus}</td>
+                              </tr>
+                              <tr>
+                                <th>Loan Type:</th>
+                                <td>{this.state.Loan01_LoanType}</td>
+                              </tr>
+                              <tr>
+                                <th>Original Loan Amount:</th>
+                                <td>{this.state.Loan01_OriginalAmount}</td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </Col>
+                        <Col>
+                          <Table>
+                            <tbody>
+                              <tr>
+                                <th>Interest Rate:</th>
+                                <td>{this.state.Loan01_InterestRate}</td>
+                              </tr>
+                              <tr>
+                                <th>Accrued Interest:</th>
+                                <td>{this.state.Loan01_AccruedInterestRate}</td>
+                              </tr>
+                              <tr>
+                                <th>Capitalized Interest:</th>
+                                <td>{this.state.Loan01_CapitalizedInterest}</td>
+                              </tr>
+                              <tr>
+                                <th>Lender Name:</th>
+                                <td>{this.state.Loan01_LenderName}</td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </Col>
+                        <Col>
+                          <Table>
+                            <tbody>
+                              <tr>
+                                <th>Outstanding Balance:</th>
+                                <td>{this.state.Loan01_OutstandingBalance}</td>
+                              </tr>
+                              <tr>
+                                <th>Principal Balance:</th>
+                                <td>{this.state.Loan01_PrincipalBalance}</td>
+                              </tr>
+                              <tr>
+                                <th>Disbursements:</th>
+                                <td>
+                                  {this.state.Loan01_Disbursements.map(disbursement => (
+                                    <p>{disbursement}</p>
+                                  ))}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </Col>
+                      </Row>
+                    </Card.Body>
                   </Accordion.Collapse>
                 </Card>
               </Accordion>
