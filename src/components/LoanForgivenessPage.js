@@ -8,8 +8,11 @@ import Nav from 'react-bootstrap/Nav';
 import '../stylesheets/forgiveness.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import DownloadLink from "react-download-link";
+
 
 class LoanForgivenessPage extends React.Component{
   constructor(){
@@ -258,8 +261,8 @@ class ApplyForLoanForgiveness extends React.Component{
           <h3 className="text-center">Apply For Student Loan Forgiveness</h3>
           <br></br>
           <Accordion>
-            <Card>
-              <Card.Header>
+            <Card style={{borderRadius: '8px'}}>
+              <Card.Header className="card-headers">
                 <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
                   Deferment
                   &nbsp;&nbsp;&nbsp;
@@ -267,11 +270,110 @@ class ApplyForLoanForgiveness extends React.Component{
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">
-                <Card.Body>Hello! I'm the body</Card.Body>
+                <Card.Body>
+                  <div className="form-cards">
+                    <p>Cancer Treatment Deferment</p>
+                    <FontAwesomeIcon icon={faFilePdf} />
+                    &nbsp;&nbsp;&nbsp;
+                    <DownloadLink
+                      label="Download Application (PDF)"
+                      filename="../ForgivenessAppsPDFs/CancerTreatmentDeferment.pdf"
+                      exportFile={() => "My cached data"}
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-cards">
+                    <p>Economic Hardship Deferment</p>
+                    <FontAwesomeIcon icon={faFilePdf} />
+                    &nbsp;&nbsp;&nbsp;
+                    <DownloadLink
+                      label="Download Application (PDF)"
+                      filename="../ForgivenessAppsPDFs/EconomicHardshipDeferment.pdf"
+                      exportFile={() => "My cached data"}
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-cards">
+                    <p>Graduate Fellowship Deferment</p>
+                    <FontAwesomeIcon icon={faFilePdf} />
+                    &nbsp;&nbsp;&nbsp;
+                    <DownloadLink
+                      label="Download Application (PDF)"
+                      filename="../ForgivenessAppsPDFs/GraduateFellowshipDeferment.pdf"
+                      exportFile={() => "My cached data"}
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-cards">
+                    <p>In School Deferment</p>
+                    <FontAwesomeIcon icon={faFilePdf} />
+                    &nbsp;&nbsp;&nbsp;
+                    <DownloadLink
+                      label="Download Application (PDF)"
+                      filename="../ForgivenessAppsPDFs/InSchoolDeferment.pdf"
+                      exportFile={() => "My cached data"}
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-cards">
+                    <p>Military Service and Post Active Duty Student Deferment</p>
+                    <FontAwesomeIcon icon={faFilePdf} />
+                    &nbsp;&nbsp;&nbsp;
+                    <DownloadLink
+                      label="Download Application (PDF)"
+                      filename="../ForgivenessAppsPDFs/MilitaryServiceandPostActiveDutyStudentDeferment.pdf"
+                      exportFile={() => "My cached data"}
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-cards">
+                    <p>Parent PLUS Borrower Deferment</p>
+                    <FontAwesomeIcon icon={faFilePdf} />
+                    &nbsp;&nbsp;&nbsp;
+                    <DownloadLink
+                      label="Download Application (PDF)"
+                      filename="../ForgivenessAppsPDFs/ParentPLUSBorrowerDeferment.pdf"
+                      exportFile={() => "My cached data"}
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-cards">
+                    <p>Rehabilitation Training Deferment</p>
+                    <FontAwesomeIcon icon={faFilePdf} />
+                    &nbsp;&nbsp;&nbsp;
+                    <DownloadLink
+                      label="Download Application (PDF)"
+                      filename="../ForgivenessAppsPDFs/RehabilitationTrainingDeferment.pdf"
+                      exportFile={() => "My cached data"}
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-cards">
+                    <p>Temporary Total Disability Deferment</p>
+                    <FontAwesomeIcon icon={faFilePdf} />
+                    &nbsp;&nbsp;&nbsp;
+                    <DownloadLink
+                      label="Download Application (PDF)"
+                      filename="../ForgivenessAppsPDFs/TemporaryTotalDisabilityDeferment.pdf"
+                      exportFile={() => "My cached data"}
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-cards">
+                    <p>Unemployment Deferment</p>
+                    <FontAwesomeIcon icon={faFilePdf} />
+                    &nbsp;&nbsp;&nbsp;
+                    <DownloadLink
+                      label="Download Application (PDF)"
+                      filename="../ForgivenessAppsPDFs/UnemploymentDeferment.pdf"
+                      exportFile={() => "My cached data"}
+                    />
+                  </div>
+                </Card.Body>
               </Accordion.Collapse>
             </Card>
-            <Card>
-              <Card.Header>
+            <Card style={{borderRadius: '8px'}}>
+              <Card.Header className="card-headers">
                 <Accordion.Toggle as={Card.Header} variant="link" eventKey="1">
                   Forbearance
                   &nbsp;&nbsp;&nbsp;
@@ -282,8 +384,8 @@ class ApplyForLoanForgiveness extends React.Component{
                 <Card.Body>Hello! I'm another body</Card.Body>
               </Accordion.Collapse>
             </Card>
-            <Card>
-              <Card.Header>
+            <Card style={{borderRadius: '8px'}}>
+              <Card.Header className="card-headers">
                 <Accordion.Toggle as={Card.Header} variant="link" eventKey="2">
                   Discharge and Forgiveness
                   &nbsp;&nbsp;&nbsp;
@@ -291,18 +393,19 @@ class ApplyForLoanForgiveness extends React.Component{
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="2">
-                <Card.Body>Hello! I'm the body</Card.Body>
+                <Card.Body>Hello! I'm the body
+                </Card.Body>
               </Accordion.Collapse>
             </Card>
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+            <Card style={{borderRadius: '8px'}}>
+              <Card.Header className="card-headers">
+                <Accordion.Toggle as={Card.Header} variant="link" eventKey="3">
                   Loan Rehabilitation
                   &nbsp;&nbsp;&nbsp;
                   <FontAwesomeIcon icon={faAngleDown} />
                 </Accordion.Toggle>
               </Card.Header>
-              <Accordion.Collapse eventKey="0">
+              <Accordion.Collapse eventKey="3">
                 <Card.Body>Hello! I'm the body</Card.Body>
               </Accordion.Collapse>
             </Card>
