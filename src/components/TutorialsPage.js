@@ -15,7 +15,7 @@ class TutorialsPage extends React.Component{
         <h2 style={{paddingLeft: '600px', paddingBottom: '100px', backgroundColor: ""}}>Financial Tutorials</h2>
         <div style={{backgroundColor:'#DFF3F7', paddingRight:'200px', paddingLeft: '200px', display: 'grid', gridTemplateColumns: '500px 500px',
         gridGap: '20px', borderRadius: '5px', columnCount: 2}}>
-         
+
          <div><ReactPlayer
             height="300px"
             width="500px"
@@ -81,10 +81,6 @@ class TutorialsPage extends React.Component{
             </div>
 
         </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> a0894adfd55723e3711ba3a4806dd537707f1a20
       </div>
     );
   }
