@@ -9,16 +9,14 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
-import { MDBContainer, MDBInput } from "mdbreact";
 
-class BudgetPage extends React.Component{
+class BudgetPage extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       diningBudget: 0,
       entertainmentBudget: 0,
       shoppingBudget: 0,
-      percentage: 0,
       modalShow: false
     }
     this.handleEdit = this.handleEdit.bind(this);
@@ -52,52 +50,65 @@ class BudgetPage extends React.Component{
 
         <div style={{paddingLeft: "430px", paddingTop: "50px"}}>
           <Row>
-            <Col>
+            <Col xs={1}>
               <h5>Dining: </h5>
             </Col>
-            <Col>
+            <Col xs={5} style={{left: "48px", top: "3px"}}>
+              <div class="progress">
+                <div class="progress-bar bg-info" role="progressbar" style={{width: "25%", height: "20px"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
+              </div>
+            </Col>
+            <Col xs={3} style={{paddingLeft: "45px"}}>
               <p>
-                {"$" + this.state.diningBudget}
+                {"$16 of $" + this.state.diningBudget}
               </p>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col xs={2}>
               <h5>Entertainment: </h5>
             </Col>
-            <Col>
+            <Col xs={5} style={{right: "37px", top: "3px"}}>
+              <div class="progress">
+                <div class="progress-bar progress-bar bg-info" role="progressbar" style={{width: "50%", height: "20px"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
+              </div>
+            </Col>
+            <Col xs={3} style={{right: "56px"}}>
               <p>
-                {"$" + this.state.entertainmentBudget}
+                {"$20 of $" + this.state.entertainmentBudget}
               </p>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col xs={1}>
               <h5>Shopping: </h5>
             </Col>
-            <Col>
+            <Col xs={5} style={{left: "48px", top: "3px"}}>
+              <div class="progress">
+                <div class="progress-bar progress-bar bg-info" role="progressbar" style={{width: "50%", height: "20px"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
+              </div>
+            </Col>
+            <Col xs={3} style={{paddingLeft: "45px"}}>
               <p>
-                {"$" + this.state.shoppingBudget}
+                {"$33 of $" + this.state.shoppingBudget}
               </p>
             </Col>
           </Row>
           
           <br></br>
-          <Button variant="primary" onClick={this.handleEdit}>Create a new Budget</Button>
+          <Button variant="info" onClick={this.handleEdit}>Create a new Budget</Button>
           <EditModal
             show={this.state.modalShow}
             onHide={this.closeModal}
             onSubmit={this.handleSubmitForm}
           />
-
         </div>
-
       </div>
     );
   }
 }
 
-class EditModal extends React.Component{
+class EditModal extends React.Component {
 
   constructor(props){
     super(props);
@@ -202,8 +213,6 @@ class EditModal extends React.Component{
                   <label style={{paddingLeft: "5px"}}>Monthly</label>
                 </div>
               </Col>
-
-              
             </Row>
             &nbsp;&nbsp;&nbsp;
             
