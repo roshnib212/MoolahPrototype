@@ -26,7 +26,8 @@ class RegisterAccountPage extends React.Component{
         username: null,
         password: null,
         confirmpass: null,
-        showNextPage: false
+        showNextPage: false,
+        confirmPassError: false
       }
       this.handleChange_firstName = this.handleChange_firstName.bind(this);
       this.handleChange_lastName = this.handleChange_lastName.bind(this);
@@ -34,7 +35,7 @@ class RegisterAccountPage extends React.Component{
       this.handleChange_phone = this.handleChange_phone.bind(this);
       this.handleChange_username = this.handleChange_username.bind(this);
       this.handleChange_password = this.handleChange_password.bind(this);
-      this.handleChange_confirmpass = this.handleChange_password.bind(this);
+      this.handleChange_confirmpass = this.handleChange_confirmpass.bind(this);
       this.handleNextPage = this.handleNextPage.bind(this);
   }
   handleChange_firstName(event){
@@ -56,7 +57,13 @@ class RegisterAccountPage extends React.Component{
     this.setState({password: event.target.value});
   }
   handleChange_confirmpass(event){
-    this.setState({confirmpass: event.target.value});
+    var passwordsSame = this.state.password == event.target.value;
+    if(passwordsSame){
+      this.setState({confirmpass: event.target.value, confirmPassError: false});
+    }
+    else{
+      this.setState({confirmPassError: true});
+    }
   }
   handleNextPage(){
     this.setState({showNextPage: true});
@@ -70,7 +77,7 @@ class RegisterAccountPage extends React.Component{
         <h1 className="registertitle">Register</h1>
         <ProgressBar striped variant="info" now={33} />
         <br></br>
-        <Form>
+        <Form onSubmit={this.handleNextPage}>
           <Form.Row>
             <Form.Group as={Col} controlId="formGridName">
               <Form.Label>First Name</Form.Label>
@@ -103,10 +110,16 @@ class RegisterAccountPage extends React.Component{
             <Form.Group as={Col}>
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control required type="password" onChange={this.handleChange_confirmpass} placeholder="Re-type password" />
+              {this.state.confirmPassError ? (
+                <Form.Text style={{color: 'red'}}>
+                  Passwords must match
+                </Form.Text>
+              ): null
+              }
             </Form.Group>
           </Form.Row>
+          <Button type="submit" variant="info">Next Page</Button>
         </Form>
-        <Button onClick={this.handleNextPage} variant="info">Next Page</Button>
       </div>
     )
   }
@@ -119,9 +132,11 @@ class SecondRegisterPage extends React.Component{
     this.state = {
       country: null,
       zipcode: null,
+      zipcodeError: false,
       showNextPage: false,
       options: this.options,
-      value: null
+      value: null,
+      countryError: false
     }
     this.handleNextPage = this.handleNextPage.bind(this);
     this.handleChange_zipcode = this.handleChange_zipcode.bind(this);
@@ -130,10 +145,25 @@ class SecondRegisterPage extends React.Component{
     this.setState({ value })
   }
   handleChange_zipcode(event){
-    this.setState({zipcode: event.target.value});
+    var isnum = /^\d+$/.test(event.target.value);
+    if(!isnum){
+      this.setState({zipcodeError: true})
+    }
+    else{
+      this.setState({
+        zipcode: event.target.value,
+        zipcodeError: false
+      });
+    }
   }
   handleNextPage(){
-    this.setState({showNextPage: true});
+    if(this.state.value == null){
+      this.setState({countryError: true});
+
+    }
+    else{
+      this.setState({showNextPage: true, countryError: false});
+    }
   }
   render(){
     if(this.state.showNextPage === true){
@@ -145,32 +175,46 @@ class SecondRegisterPage extends React.Component{
         <ProgressBar striped variant="info" now={66} />
         <br></br>
         <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}} className="text-center">
-          <Row>
-            <Col>
-              <br></br>
-              <h5>Country</h5>
-            </Col>
-            <Col>
-              <br></br>
-              <Select
-                options={this.state.options}
-                value={this.state.value}
-                onChange={this.changeHandler}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <br></br>
-              <h5>Zipcode</h5>
-            </Col>
-            <Col>
-              <br></br>
-              <Form.Control onChange={this.handleChange_zipcode} placeholder="Enter Zipcode" />
-            </Col>
-          </Row>
-          <br></br>
-          <Button onClick={this.handleNextPage} variant="info">Next Page</Button>
+          <Form onSubmit={this.handleNextPage}>
+            <Row>
+              <Col>
+                <br></br>
+                <h5>Country</h5>
+              </Col>
+              <Col>
+                <br></br>
+                <Select
+                  options={this.state.options}
+                  value={this.state.value}
+                  onChange={this.changeHandler}
+                />
+                {this.state.countryError ? (
+                  <Form.Text style={{color: 'red'}}>
+                    This field is required
+                  </Form.Text>
+                ): null
+                }
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <br></br>
+                <h5>Zipcode</h5>
+              </Col>
+              <Col>
+                <br></br>
+                <Form.Control required onChange={this.handleChange_zipcode} placeholder="Enter Zipcode" />
+                {this.state.zipcodeError ? (
+                  <Form.Text style={{color: 'red'}}>
+                    Please enter a valid zipcode
+                  </Form.Text>
+                ): null
+                }
+              </Col>
+            </Row>
+            <br></br>
+            <Button type="submit" variant="info">Next Page</Button>
+          </Form>
         </div>
       </div>
     );
@@ -183,7 +227,8 @@ class ThirdRegisterPage extends React.Component{
     this.state = {
       value: null,
       success: false,
-      redirect: false
+      redirect: false,
+      enableSignIn: false
     }
   }
   setSuccess = () => {
@@ -214,7 +259,8 @@ class ThirdRegisterPage extends React.Component{
     }
   }
   changeHandler = value => {
-    this.setState({ value })
+    this.setState({ value });
+    this.setState({enableSignIn: true});
   }
   render(){
     const options = [
@@ -250,7 +296,7 @@ class ThirdRegisterPage extends React.Component{
           </Row>
           <br></br>
           {this.renderConfirmation()}
-          <Button variant="dark">Sign-in to Bank</Button>
+          <Button disabled={!this.state.enableSignIn} variant="dark">Sign-in to Bank</Button>
           &nbsp;&nbsp;&nbsp;
           <Button onClick={this.setSuccess} variant="info">Complete Registration!</Button>
         </div>
