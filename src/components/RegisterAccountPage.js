@@ -5,6 +5,8 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+
 import Select from 'react-select';
 import Row from 'react-bootstrap/Row';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -180,8 +182,14 @@ class ThirdRegisterPage extends React.Component{
     super(props);
     this.state = {
       value: null,
+      success: false,
       redirect: false
     }
+  }
+  setSuccess = () => {
+    this.setState({
+      success: true
+    });
   }
   setRedirect = () => {
     this.setState({
@@ -190,7 +198,19 @@ class ThirdRegisterPage extends React.Component{
   }
   renderRedirect = () => {
     if(this.state.redirect){
-      return <Redirect to="/" />
+      return <Redirect to='/' />
+    }
+  }
+  renderConfirmation = () => {
+    if(this.state.success){
+      return (
+        <Alert variant='success'>
+          Account Created Successfully!
+          <br></br>
+          {this.renderRedirect()}
+          <Button onClick={this.setRedirect} variant='outline-success'>Login</Button>
+        </Alert>
+      )
     }
   }
   changeHandler = value => {
@@ -229,10 +249,10 @@ class ThirdRegisterPage extends React.Component{
             </Col>
           </Row>
           <br></br>
-          {this.renderRedirect()}
+          {this.renderConfirmation()}
           <Button variant="dark">Sign-in to Bank</Button>
           &nbsp;&nbsp;&nbsp;
-          <Button onClick={this.setRedirect} variant="info">Complete Registration!</Button>
+          <Button onClick={this.setSuccess} variant="info">Complete Registration!</Button>
         </div>
       </div>
     )

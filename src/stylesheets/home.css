@@ -21,10 +21,10 @@ img {
   background-color: #40e4cc;
 }
 
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-text{
-  color: white;
+.navbar-brand{
+  font-family: 'Comic Sans MS';
 }
+
 .text{
   padding: 20px;
   color: #464646;
