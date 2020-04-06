@@ -50,10 +50,10 @@ class BudgetPage extends React.Component {
 
         <div style={{paddingLeft: "430px", paddingTop: "50px"}}>
           <Row>
-            <Col xs={1}>
+            <Col xs={1} style={{left: '35px'}}>
               <h5>Dining: </h5>
             </Col>
-            <Col xs={5} style={{left: "48px", top: "3px"}}>
+            <Col xs={5} style={{left: "48px", top: "7px"}}>
               <div class="progress">
                 <div class="progress-bar bg-info" role="progressbar" style={{width: "25%", height: "20px"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
               </div>
@@ -65,10 +65,10 @@ class BudgetPage extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Col xs={2}>
+            <Col xs={2} style={{left: '-50px'}}>
               <h5>Entertainment: </h5>
             </Col>
-            <Col xs={5} style={{right: "37px", top: "3px"}}>
+            <Col xs={5} style={{right: "37px", top: "7px"}}>
               <div class="progress">
                 <div class="progress-bar progress-bar bg-info" role="progressbar" style={{width: "50%", height: "20px"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
               </div>
@@ -83,7 +83,7 @@ class BudgetPage extends React.Component {
             <Col xs={1}>
               <h5>Shopping: </h5>
             </Col>
-            <Col xs={5} style={{left: "48px", top: "3px"}}>
+            <Col xs={5} style={{left: "48px", top: "7px"}}>
               <div class="progress">
                 <div class="progress-bar progress-bar bg-info" role="progressbar" style={{width: "50%", height: "20px"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
               </div>
@@ -94,7 +94,7 @@ class BudgetPage extends React.Component {
               </p>
             </Col>
           </Row>
-          
+
           <br></br>
           <Button variant="info" onClick={this.handleEdit}>Create a new Budget</Button>
           <EditModal
@@ -178,9 +178,9 @@ class EditModal extends React.Component {
               <Col>
                 <Form.Label>Entertainment Budget</Form.Label>
               </Col>
-              
+
                 <Form.Label style={{paddingTop: "5px"}}>$</Form.Label>
-              
+
               <Col>
                 <Form.Group>
                   <Form.Control value={this.state.entertainmentBudget} onChange={this.handleEntertainmentChange}/>
@@ -198,7 +198,7 @@ class EditModal extends React.Component {
                 <Form.Control value={this.state.shoppingBudget} onChange={this.handleShoppingChange}/>
 
                 <br></br>
-                
+
                 <Row>
                   How Often?:
                 </Row>
@@ -215,7 +215,7 @@ class EditModal extends React.Component {
               </Col>
             </Row>
             &nbsp;&nbsp;&nbsp;
-            
+
             <Button variant="success" type="submit">Submit</Button>
           </Form>
         </Modal.Body>
