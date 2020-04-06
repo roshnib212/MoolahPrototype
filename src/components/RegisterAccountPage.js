@@ -129,6 +129,7 @@ class SecondRegisterPage extends React.Component{
   constructor(props){
     super(props);
     this.options = countryList().getData();
+    console.log(this.options);
     this.state = {
       country: null,
       zipcode: null,
@@ -186,6 +187,7 @@ class SecondRegisterPage extends React.Component{
                 <Select
                   options={this.state.options}
                   value={this.state.value}
+                  defaultValue={this.state.options[235]}
                   onChange={this.changeHandler}
                 />
                 {this.state.countryError ? (

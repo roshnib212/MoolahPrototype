@@ -21,18 +21,50 @@ class BudgetPage extends React.Component {
       budgets: [],
       showCreateModal: false,
       budgetName: null,
-      amount: null
+      amount: null,
+      showEditModal: false
     }
     this.openCreateModal = this.openCreateModal.bind(this);
     this.closeCreateModal = this.closeCreateModal.bind(this);
     this.handleCreateBudget = this.handleCreateBudget.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.openEditModal = this.openEditModal.bind(this);
+    this.closeEditModal = this.closeEditModal.bind(this);
+    this.handleEditBudget = this.handleEditBudget.bind(this);
   }
   openCreateModal(){
     this.setState({showCreateModal: true});
   }
   closeCreateModal(){
     this.setState({showCreateModal: false});
+  }
+  openEditModal(budget){
+    this.setState({
+      showEditModal: true,
+      budgetName: budget.name
+    });
+  }
+  closeEditModal(budgetName, amount){
+    this.setState({showEditModal: false});
+  }
+  handleEditBudget(budgetName, amount){
+    let arrayLength = this.state.budgets.length;
+    var newBudgetsList = []
+    for(let i=0; i<arrayLength; i++){
+      let currBudget = this.state.budgets[i];
+      if(currBudget.name == budgetName){
+        currBudget.amount = amount;
+      }
+      newBudgetsList.push({name: currBudget.name, amount: currBudget.amount});
+    }
+    this.setState(
+      {
+        budgetName: budgetName,
+        amount: amount,
+        budgets: newBudgetsList
+      }
+    );
+    this.closeEditModal(budgetName, amount);
   }
   handleCreateBudget(budgetName, amount){
     const newBudgetsList = this.state.budgets.concat({name: budgetName, amount: amount});
@@ -51,7 +83,7 @@ class BudgetPage extends React.Component {
     for(let i = 0 ; i < arrayLength; i++) {
       let currBudget= this.state.budgets[i];
       if (currBudget.name != budget.name){
-        newBudgetsList.concat(currBudget);
+        newBudgetsList.push(currBudget);
       }
     }
     this.setState({budgets: newBudgetsList});
@@ -70,7 +102,7 @@ class BudgetPage extends React.Component {
               <Card.Header style={{color: 'white', backgroundColor: '#34495E'}}>
                 {budget.name}
                 <ButtonToolbar className="float-right">
-                  <Button variant='light'>Edit</Button>
+                  <Button onClick={() => this.openEditModal(budget)} variant='light'>Edit</Button>
                   &nbsp;&nbsp;&nbsp;
                   <Button onClick={() => this.handleDelete(budget)} variant='danger'>Delete</Button>
                 </ButtonToolbar>
@@ -85,11 +117,17 @@ class BudgetPage extends React.Component {
                   </Col>
                 </Row>
               </Card.Body>
+              <EditBudgetModal
+                show={this.state.showEditModal}
+                onHide={this.closeEditModal}
+                onSubmit={this.handleEditBudget}
+                budgetName={this.state.budgetName}
+              />
             </Card>
           ))}
         </div>
         <br></br>
-        <div class="d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
           <Row>
             <Button style = {{margin: 0, alignSelf: 'center'}} variant="info" onClick={this.openCreateModal}>Create New Budget</Button>
           </Row>
@@ -216,6 +254,120 @@ class CreateBudgetModal extends React.Component{
         </Modal.Footer>
     </Modal>
     );
+  }
+}
+
+class EditBudgetModal extends React.Component{
+  constructor(props){
+    super(props);
+    this.state ={
+      budgetName: this.props.budgetName,
+      amount: null,
+      amountError: false
+    }
+    this.handleBudgetChange = this.handleBudgetChange.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleBudgetChange(event){
+    this.setState({budgetName: event.target.value});
+  }
+
+  handleAmountChange(event){
+    var isnum = /^\d+$/.test(event.target.value);
+    if(!isnum){
+      this.setState({amountError: true})
+    }
+    else{
+      this.setState({
+        amount: event.target.value,
+        amountError: false
+      });
+    }
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    this.props.onSubmit(this.state.budgetName, this.state.amount);
+  }
+  render(){
+    return(
+      <Modal show={this.props.show} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header>
+          <Modal.Title id="contained-model-title-vcenter">
+            Create a Budget
+          </Modal.Title>
+          <button onClick={this.props.onHide} type="button" className="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={this.handleSubmit}>
+            <div style={{paddingLeft: '100px', paddingRight: '200px'}}>
+              <Row>
+                <Col>
+                  <Form.Label className="create-budget-modal-labels">Budget Category:</Form.Label>
+                </Col>
+                <Col>
+                  <Form.Group>
+                    <Form.Control required as="select" value={this.props.budgetName} onChange={this.handleBudgetChange}>
+                      <option>Choose a Category...</option>
+                      <option value="Auto & Transport">Auto & Transport</option>
+                      <option value="Bills & Utilities">Bills & Utilities</option>
+                      <option value="Business Services">Business Services</option>
+                      <option value="Education">Education</option>
+                      <option value="Entertainment">Entertainment</option>
+                      <option value="Food & Dining">Food & Dining</option>
+                      <option value="Gifts & Donations">Gifts & Donations</option>
+                      <option value="Health & Fitness">Health & Fitness</option>
+                      <option value="Home">Home</option>
+                      <option value="Investments">Investments</option>
+                      <option value="Misc Expenses">Misc Expenses</option>
+                      <option value="Personal Care">Personal Care</option>
+                      <option value="Pets">Pets</option>
+                      <option value="Shopping">Shopping</option>
+                      <option value="Taxes">Taxes</option>
+                      <option value="Travel">Travel</option>
+                      <option value="Uncategorized">Uncategorized</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Form.Label className="create-budget-modal-labels">How Often Will This Happen?</Form.Label>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Check type="radio" label="Every Month" />
+                </Col>
+                <Col>
+                  <Form.Check type="radio" label="Every Week" />
+                </Col>
+              </Row>
+              <br></br>
+              <Row>
+                <Col>
+                  <Form.Label className="create-budget-modal-labels">Amount Allocated: </Form.Label>
+                </Col>
+                <Col>
+                  <Form.Control placeholder="$" onChange={this.handleAmountChange}></Form.Control>
+                  {this.state.amountError ? (
+                    <Form.Text style={{color: 'red'}}>
+                      Please enter a valid amount
+                    </Form.Text>
+                  ): null
+                  }
+                </Col>
+              </Row>
+            </div>
+            <br></br>
+            <Button className="float-right" variant="success" type="submit">Submit</Button>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+        </Modal.Footer>
+    </Modal>
+    )
   }
 }
 

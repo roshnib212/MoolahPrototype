@@ -12,6 +12,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import DownloadLink from "react-download-link";
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+
 
 
 class LoanForgivenessPage extends React.Component{
@@ -34,6 +37,11 @@ class LoanForgivenessPage extends React.Component{
         <MoolahNavBar />
         <br></br>
         <div style={{paddingRight: '50px', position: '-webkit-sticky', position: 'sticky', top: 0}} className="float-right">
+          <Form inline className="float-right">
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="dark">Search</Button>
+          </Form>
+          <br></br>
           <br></br>
           <br></br>
             <nav>
