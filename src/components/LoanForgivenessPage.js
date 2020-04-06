@@ -18,15 +18,53 @@ import FormControl from 'react-bootstrap/FormControl';
 
 
 class LoanForgivenessPage extends React.Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      renderApps: false
+      renderApps: false,
+      idList: [
+        'differences',
+        'types',
+        'publicservice',
+        'teacher',
+        'closedschool',
+        'perkins',
+        'disability',
+        'death',
+        'bankruptcy',
+        'borrowerdefense',
+        'falsecert',
+        'unpaidrefund',
+        'parentborrowerers',
+        'apply',
+        'payments',
+        'approved',
+        'denied'
+      ],
+      searchBarText: null
     }
     this.handleClick = this.handleClick.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
   handleClick(event){
     this.setState({renderApps: true});
+  }
+  handleSearchChange(event){
+    this.setState({searchBarText: event.target.value});
+  }
+  handleSearch(event){
+    for(let i=0; i<this.state.idList.length; i++){
+      let docObj = document.getElementById(this.state.idList[i]);
+      console.log(docObj.textContent);
+      let searchBarText = this.state.searchBarText.toLowerCase();
+      let textInTag = docObj.textContent.toLowerCase();
+      if (textInTag.includes(searchBarText)) {
+          window.location.href = window.location.pathname + "#" + this.state.idList[i];
+      } else {
+          window.location.href = window.location.pathname;
+      }
+    }
   }
   render(){
     if(this.state.renderApps===true){
@@ -37,9 +75,9 @@ class LoanForgivenessPage extends React.Component{
         <MoolahNavBar />
         <br></br>
         <div style={{paddingRight: '50px', position: '-webkit-sticky', position: 'sticky', top: 0}} className="float-right">
-          <Form inline className="float-right">
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="dark">Search</Button>
+          <Form inline onSubmit={this.handleSearch} className="float-right">
+            <FormControl type="text" onChange={this.handleSearchChange} placeholder="Search" className="mr-sm-2" />
+            <Button type="submit" variant="dark">Search</Button>
           </Form>
           <br></br>
           <br></br>
