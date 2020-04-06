@@ -26,6 +26,7 @@ class BudgetPage extends React.Component {
     this.openCreateModal = this.openCreateModal.bind(this);
     this.closeCreateModal = this.closeCreateModal.bind(this);
     this.handleCreateBudget = this.handleCreateBudget.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   openCreateModal(){
     this.setState({showCreateModal: true});
@@ -44,6 +45,17 @@ class BudgetPage extends React.Component {
     );
     this.closeCreateModal();
   }
+  handleDelete(budget){
+    let arrayLength = this.state.budgets.length;
+    var newBudgetsList = []
+    for(let i = 0 ; i < arrayLength; i++) {
+      let currBudget= this.state.budgets[i];
+      if (currBudget.name != budget.name){
+        newBudgetsList.concat(currBudget);
+      }
+    }
+    this.setState({budgets: newBudgetsList});
+  }
   render(){
     const defaultMoneySpent = 10;
     return (
@@ -60,7 +72,7 @@ class BudgetPage extends React.Component {
                 <ButtonToolbar className="float-right">
                   <Button variant='light'>Edit</Button>
                   &nbsp;&nbsp;&nbsp;
-                  <Button variant='danger'>Delete</Button>
+                  <Button onClick={() => this.handleDelete(budget)} variant='danger'>Delete</Button>
                 </ButtonToolbar>
               </Card.Header>
               <Card.Body>
@@ -73,7 +85,6 @@ class BudgetPage extends React.Component {
                   </Col>
                 </Row>
               </Card.Body>
-              <br></br>
             </Card>
           ))}
         </div>
