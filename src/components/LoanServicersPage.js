@@ -252,6 +252,18 @@ class NewServicerModal extends React.Component{
 
 }
 
+class RemoveServicerModal extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state={
+      ServicerName: null,
+      ServicerUsername: null,
+      ServicerPassword: null
+    }
+  }
+}
+
 class NewLenderModal extends React.Component{
 
   constructor(props){
