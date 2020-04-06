@@ -12,7 +12,7 @@ import { MDBContainer } from "mdbreact";
 class OverviewPage extends React.Component{
   pieState = {
     dataPie: {
-      labels: ["Shopping", "Necessities", "Investments", "Transportation", "Dining"],
+      labels: ["Shopping $", "Necessities $", "Investments $", "Transportation $", "Dining $"],
       datasets: [
         {
           data: [300, 50, 100, 40, 120],
@@ -41,7 +41,7 @@ barState = {
       labels: ["Last Month Earnings", "Last Month Spendings", "Current Month Earnings", "Current Month Spendings"],
       datasets: [
         {
-          label: "Dollars",
+          label: "Spendings/Earnings $",
           data: [100, 80, 100, 40],
           backgroundColor: [
             "rgba(255, 134,159,0.4)",
@@ -91,7 +91,7 @@ lineState = {
       labels: ["January", "February", "March", "April", "May", "June", "July"],
       datasets: [
         {
-          label: "Earnings",
+          label: "Earnings $",
           fill: true,
           lineTension: 0.3,
           backgroundColor: "rgba(225, 204,230, .3)",
@@ -112,7 +112,7 @@ lineState = {
           data: [100, 100, 150, 150, 200, 200, 220]
         },
         {
-          label: "Savings",
+          label: "Savings $",
           fill: true,
           lineTension: 0.3,
           backgroundColor: "rgba(184, 185, 210, .3)",
