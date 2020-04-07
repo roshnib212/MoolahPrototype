@@ -56,7 +56,6 @@ class LoanForgivenessPage extends React.Component{
   handleSearch(event){
     for(let i=0; i<this.state.idList.length; i++){
       let docObj = document.getElementById(this.state.idList[i]);
-      console.log(docObj.textContent);
       let searchBarText = this.state.searchBarText.toLowerCase();
       let textInTag = docObj.textContent.toLowerCase();
       if (textInTag.includes(searchBarText)) {

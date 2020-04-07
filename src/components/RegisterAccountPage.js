@@ -129,7 +129,6 @@ class SecondRegisterPage extends React.Component{
   constructor(props){
     super(props);
     this.options = countryList().getData();
-    console.log(this.options);
     this.state = {
       country: null,
       zipcode: null,
