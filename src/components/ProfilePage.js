@@ -9,6 +9,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Card from 'react-bootstrap/Card';
+import history from './history.js';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,7 +26,8 @@ class ProfilePage extends React.Component{
       income: null,
       residential_status: null,
       household_size: null,
-      modalShow: false
+      modalShow: false,
+      username: (history.location.state != null) ? history.location.state.username : 'User'
     }
     this.handleEdit = this.handleEdit.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -52,76 +57,56 @@ class ProfilePage extends React.Component{
       <div style={{backgroundColor:'#DFF3F7'}} className="text-center">
         <MoolahNavBar />
         <br></br>
-        <h2>Hello User!</h2>
+        <h2>Hello {this.state.username} !</h2>
         <br></br>
-        <div style={{backgroundColor:'#DFF3F7', paddingRight:'400px', paddingLeft: '400px'}} className="text-left">
-          <Row>
-            <Col>
-              <h5>Marital Status</h5>
-            </Col>
-            <Col>
-              <p>
-                {this.state.marital_status}
-              </p>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h5>Education Level</h5>
-            </Col>
-            <Col>
-              <p>
-                {this.state.education_level}
-              </p>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h5>Credit Score</h5>
-            </Col>
-            <Col>
-              <p>
-                {this.state.credit_score}
-              </p>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h5>Income</h5>
-            </Col>
-            <Col>
-              <p>
-                {this.state.income}
-              </p>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h5>Residential Status</h5>
-            </Col>
-            <Col>
-              <p>
-                {this.state.residential_status}
-              </p>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h5>Household Size</h5>
-            </Col>
-            <Col>
-              <p>
-                {this.state.household_size}
-              </p>
-            </Col>
-          </Row>
-          <br></br>
-          <Button variant="primary" onClick={this.handleEdit}>Edit</Button>
-          <EditModal
-            show={this.state.modalShow}
-            onHide={this.closeModal}
-            onSubmit={this.handleSubmitForm}
-          />
+        <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}} className="text-left">
+        <Card>
+          <ListGroup variant="flush">
+            <ListGroup.Item>
+              <Row>
+                <Col> Marital Status: </Col>
+                <Col> {this.state.marital_status} </Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col> Education Level: </Col>
+                <Col> {this.state.education_level} </Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col> Credit Score: </Col>
+                <Col> {this.state.credit_score} </Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col> Income: </Col>
+                <Col> {this.state.income} </Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col> Residential Status: </Col>
+                <Col> {this.state.residential_status} </Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col> Household Size: </Col>
+                <Col> {this.state.household_size} </Col>
+              </Row>
+            </ListGroup.Item>
+          </ListGroup>
+        </Card>
+        <br></br>
+        <Button variant="info" onClick={this.handleEdit}>Edit</Button>
+        <EditModal
+          show={this.state.modalShow}
+          onHide={this.closeModal}
+          onSubmit={this.handleSubmitForm}
+        />
         </div>
       </div>
     );

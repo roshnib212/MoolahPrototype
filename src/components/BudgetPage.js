@@ -4,156 +4,184 @@ import '../stylesheets/home.css';
 import MoolahNavBar from './MoolahNavBar.js';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
+import Container from 'react-bootstrap/Container';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import Card from 'react-bootstrap/Card';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+
 
 class BudgetPage extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      diningBudget: 0,
-      entertainmentBudget: 0,
-      shoppingBudget: 0,
-      modalShow: false
+    this.state ={
+      budgets: [],
+      showCreateModal: false,
+      budgetName: null,
+      amount: null,
+      showEditModal: false
     }
-    this.handleEdit = this.handleEdit.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.handleSubmitForm = this.handleSubmitForm.bind(this);
+    this.openCreateModal = this.openCreateModal.bind(this);
+    this.closeCreateModal = this.closeCreateModal.bind(this);
+    this.handleCreateBudget = this.handleCreateBudget.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.openEditModal = this.openEditModal.bind(this);
+    this.closeEditModal = this.closeEditModal.bind(this);
+    this.handleEditBudget = this.handleEditBudget.bind(this);
   }
-  closeModal(){
-    this.setState({modalShow:false});
+  openCreateModal(){
+    this.setState({showCreateModal: true});
   }
-  handleEdit(event){
-    this.setState({modalShow: true});
+  closeCreateModal(){
+    this.setState({showCreateModal: false});
   }
-  handleSubmitForm(diningBudget, entertainmentBudget, shoppingBudget) {
+  openEditModal(budget){
+    this.setState({
+      showEditModal: true,
+      budgetName: budget.name
+    });
+  }
+  closeEditModal(budgetName, amount){
+    this.setState({showEditModal: false});
+  }
+  handleEditBudget(budgetName, amount){
+    let arrayLength = this.state.budgets.length;
+    var newBudgetsList = []
+    for(let i=0; i<arrayLength; i++){
+      let currBudget = this.state.budgets[i];
+      if(currBudget.name == budgetName){
+        currBudget.amount = amount;
+      }
+      newBudgetsList.push({name: currBudget.name, amount: currBudget.amount});
+    }
     this.setState(
       {
-        diningBudget: diningBudget,
-        entertainmentBudget: entertainmentBudget,
-        shoppingBudget: shoppingBudget
+        budgetName: budgetName,
+        amount: amount,
+        budgets: newBudgetsList
       }
     );
-    this.closeModal();
+    this.closeEditModal(budgetName, amount);
+  }
+  handleCreateBudget(budgetName, amount){
+    const newBudgetsList = this.state.budgets.concat({name: budgetName, amount: amount});
+    this.setState(
+      {
+        budgetName: budgetName,
+        amount: amount,
+        budgets: newBudgetsList
+      }
+    );
+    this.closeCreateModal();
+  }
+  handleDelete(budget){
+    let arrayLength = this.state.budgets.length;
+    var newBudgetsList = []
+    for(let i = 0 ; i < arrayLength; i++) {
+      let currBudget= this.state.budgets[i];
+      if (currBudget.name != budget.name){
+        newBudgetsList.push(currBudget);
+      }
+    }
+    this.setState({budgets: newBudgetsList});
   }
   render(){
+    const defaultMoneySpent = 10;
     return (
       <div style={{backgroundColor:'#DFF3F7'}}>
         <MoolahNavBar />
         <br></br>
+        <h2 className="text-center">Your Current Budgets</h2>
         <br></br>
-        <h2 style={{paddingLeft: "550px", paddingTop: "40px"}}>Your Current Budgets</h2>
-        <br></br>
-
-        <div style={{paddingLeft: "430px", paddingTop: "50px"}}>
-          <Row>
-            <Col xs={1} style={{left: '35px'}}>
-              <h5>Dining: </h5>
-            </Col>
-            <Col xs={5} style={{left: "48px", top: "7px"}}>
-              <div class="progress">
-                <div class="progress-bar bg-info" role="progressbar" style={{width: "25%", height: "20px"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"/>
-              </div>
-            </Col>
-            <Col xs={3} style={{paddingLeft: "45px"}}>
-              <p>
-                {"$16 of $" + this.state.diningBudget}
-              </p>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={2} style={{left: '-50px'}}>
-              <h5>Entertainment: </h5>
-            </Col>
-            <Col xs={5} style={{right: "37px", top: "7px"}}>
-              <div class="progress">
-                <div class="progress-bar progress-bar bg-info" role="progressbar" style={{width: "50%", height: "20px"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
-              </div>
-            </Col>
-            <Col xs={3} style={{right: "56px"}}>
-              <p>
-                {"$20 of $" + this.state.entertainmentBudget}
-              </p>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={1}>
-              <h5>Shopping: </h5>
-            </Col>
-            <Col xs={5} style={{left: "48px", top: "7px"}}>
-              <div class="progress">
-                <div class="progress-bar progress-bar bg-info" role="progressbar" style={{width: "50%", height: "20px"}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"/>
-              </div>
-            </Col>
-            <Col xs={3} style={{paddingLeft: "45px"}}>
-              <p>
-                {"$33 of $" + this.state.shoppingBudget}
-              </p>
-            </Col>
-          </Row>
-
-          <br></br>
-          <Button variant="info" onClick={this.handleEdit}>Create a new Budget</Button>
-          <EditModal
-            show={this.state.modalShow}
-            onHide={this.closeModal}
-            onSubmit={this.handleSubmitForm}
-          />
+        <div style={{backgroundColor:'#DFF3F7', paddingLeft: '200px', paddingRight: '200px'}} className="text-left">
+          {this.state.budgets.map(budget => (
+            <Card>
+              <Card.Header style={{color: 'white', backgroundColor: '#34495E'}}>
+                {budget.name}
+                <ButtonToolbar className="float-right">
+                  <Button onClick={() => this.openEditModal(budget)} variant='light'>Edit</Button>
+                  &nbsp;&nbsp;&nbsp;
+                  <Button onClick={() => this.handleDelete(budget)} variant='danger'>Delete</Button>
+                </ButtonToolbar>
+              </Card.Header>
+              <Card.Body>
+                <Row>
+                  <Col xs={10}>
+                    <ProgressBar style={{height: '30px'}} variant="info" now={(defaultMoneySpent/budget.amount)*100} label={`${Math.round((defaultMoneySpent/budget.amount)*100)}%`}/>
+                  </Col>
+                  <Col>
+                    <p>${defaultMoneySpent} of {budget.amount}</p>
+                  </Col>
+                </Row>
+              </Card.Body>
+              <EditBudgetModal
+                show={this.state.showEditModal}
+                onHide={this.closeEditModal}
+                onSubmit={this.handleEditBudget}
+                budgetName={this.state.budgetName}
+              />
+            </Card>
+          ))}
         </div>
+        <br></br>
+        <div className="d-flex justify-content-center">
+          <Row>
+            <Button style = {{margin: 0, alignSelf: 'center'}} variant="info" onClick={this.openCreateModal}>Create New Budget</Button>
+          </Row>
+        </div>
+        <CreateBudgetModal
+          show={this.state.showCreateModal}
+          onHide={this.closeCreateModal}
+          onSubmit={this.handleCreateBudget}
+        />
       </div>
-    );
+  );
   }
 }
 
-class EditModal extends React.Component {
-
+class CreateBudgetModal extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      diningBudget: 0,
-      entertainmentBudget: 0,
-      shoppingBudget: 0,
-      radio: 1
+    this.state ={
+      budgetName: null,
+      amount: null,
+      amountError: false
     }
-    this.handleDiningChange = this.handleDiningChange.bind(this);
-    this.handleEntertainmentChange = this.handleEntertainmentChange.bind(this);
-    this.handleShoppingChange = this.handleShoppingChange.bind(this);
+    this.handleBudgetChange = this.handleBudgetChange.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleBudgetChange(event){
+    this.setState({budgetName: event.target.value});
+  }
+
+  handleAmountChange(event){
+    var isnum = /^\d+$/.test(event.target.value);
+    if(!isnum){
+      this.setState({amountError: true})
+    }
+    else{
+      this.setState({
+        amount: event.target.value,
+        amountError: false
+      });
+    }
+  }
+
   handleSubmit(event){
     event.preventDefault();
-    this.props.onSubmit(this.state.diningBudget, this.state.entertainmentBudget,
-       this.state.shoppingBudget);
-  }
-  handleDiningChange(event){
-    this.setState({
-      diningBudget: event.target.value
-    });
-  }
-  handleEntertainmentChange(event){
-    this.setState({
-      entertainmentBudget: event.target.value
-    });
-  }
-  handleShoppingChange(event){
-    this.setState({
-      shoppingBudget: event.target.value
-    });
-  }
-  onRadioCheck = nr => () => {
-    this.setState({
-      radio: nr
-    });
+    this.props.onSubmit(this.state.budgetName, this.state.amount);
   }
   render(){
     return(
       <Modal show={this.props.show} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Create a new Budget
+          <Modal.Title id="contained-model-title-vcenter">
+            Create a Budget
           </Modal.Title>
           <button onClick={this.props.onHide} type="button" className="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -161,68 +189,185 @@ class EditModal extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={this.handleSubmit}>
-            <Row>
-              <Col>
-                <Form.Label>Dining Budget</Form.Label>
-              </Col>
-
-              <Form.Label style={{paddingTop: "5px"}}>$</Form.Label>
-
-              <Col>
-                <Form.Group>
-                  <Form.Control value={this.state.diningBudget} onChange={this.handleDiningChange}/>
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Label>Entertainment Budget</Form.Label>
-              </Col>
-
-                <Form.Label style={{paddingTop: "5px"}}>$</Form.Label>
-
-              <Col>
-                <Form.Group>
-                  <Form.Control value={this.state.entertainmentBudget} onChange={this.handleEntertainmentChange}/>
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                  <Form.Label>Shopping Budget</Form.Label>
-              </Col>
-
-              <Form.Label style={{paddingTop: "5px"}}>$</Form.Label>
-
-              <Col>
-                <Form.Control value={this.state.shoppingBudget} onChange={this.handleShoppingChange}/>
-
-                <br></br>
-
-                <Row>
-                  How Often?:
-                </Row>
-
-                <br></br>
-                <div>
-                  <input onClick={this.onRadioCheck(1)} checked={this.state.radio===1 ? true : false} type="radio"/>
-                  <label style={{paddingLeft: "5px"}}>Weekly</label>
-                </div>
-                <div>
-                  <input onClick={this.onRadioCheck(2)} checked={this.state.radio===2 ? true : false} type="radio"/>
-                  <label style={{paddingLeft: "5px"}}>Monthly</label>
-                </div>
-              </Col>
-            </Row>
-            &nbsp;&nbsp;&nbsp;
-
-            <Button variant="success" type="submit">Submit</Button>
+            <div style={{paddingLeft: '100px', paddingRight: '200px'}}>
+              <Row>
+                <Col>
+                  <Form.Label className="create-budget-modal-labels">Budget Category:</Form.Label>
+                </Col>
+                <Col>
+                  <Form.Group>
+                    <Form.Control required as="select" onChange={this.handleBudgetChange}>
+                      <option>Choose a Category...</option>
+                      <option value="Auto & Transport">Auto & Transport</option>
+                      <option value="Bills & Utilities">Bills & Utilities</option>
+                      <option value="Business Services">Business Services</option>
+                      <option value="Education">Education</option>
+                      <option value="Entertainment">Entertainment</option>
+                      <option value="Food & Dining">Food & Dining</option>
+                      <option value="Gifts & Donations">Gifts & Donations</option>
+                      <option value="Health & Fitness">Health & Fitness</option>
+                      <option value="Home">Home</option>
+                      <option value="Investments">Investments</option>
+                      <option value="Misc Expenses">Misc Expenses</option>
+                      <option value="Personal Care">Personal Care</option>
+                      <option value="Pets">Pets</option>
+                      <option value="Shopping">Shopping</option>
+                      <option value="Taxes">Taxes</option>
+                      <option value="Travel">Travel</option>
+                      <option value="Uncategorized">Uncategorized</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Form.Label className="create-budget-modal-labels">How Often Will This Happen?</Form.Label>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Check type="radio" label="Every Month" />
+                </Col>
+                <Col>
+                  <Form.Check type="radio" label="Every Week" />
+                </Col>
+              </Row>
+              <br></br>
+              <Row>
+                <Col>
+                  <Form.Label className="create-budget-modal-labels">Amount Allocated: </Form.Label>
+                </Col>
+                <Col>
+                  <Form.Control placeholder="$" onChange={this.handleAmountChange}></Form.Control>
+                  {this.state.amountError ? (
+                    <Form.Text style={{color: 'red'}}>
+                      Please enter a valid amount
+                    </Form.Text>
+                  ): null
+                  }
+                </Col>
+              </Row>
+            </div>
+            <br></br>
+            <Button className="float-right" variant="success" type="submit">Submit</Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
         </Modal.Footer>
     </Modal>
-  );
+    );
+  }
+}
+
+class EditBudgetModal extends React.Component{
+  constructor(props){
+    super(props);
+    this.state ={
+      budgetName: this.props.budgetName,
+      amount: null,
+      amountError: false
+    }
+    this.handleBudgetChange = this.handleBudgetChange.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleBudgetChange(event){
+    this.setState({budgetName: event.target.value});
+  }
+
+  handleAmountChange(event){
+    var isnum = /^\d+$/.test(event.target.value);
+    if(!isnum){
+      this.setState({amountError: true})
+    }
+    else{
+      this.setState({
+        amount: event.target.value,
+        amountError: false
+      });
+    }
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    this.props.onSubmit(this.state.budgetName, this.state.amount);
+  }
+  render(){
+    return(
+      <Modal show={this.props.show} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header>
+          <Modal.Title id="contained-model-title-vcenter">
+            Create a Budget
+          </Modal.Title>
+          <button onClick={this.props.onHide} type="button" className="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={this.handleSubmit}>
+            <div style={{paddingLeft: '100px', paddingRight: '200px'}}>
+              <Row>
+                <Col>
+                  <Form.Label className="create-budget-modal-labels">Budget Category:</Form.Label>
+                </Col>
+                <Col>
+                  <Form.Group>
+                    <Form.Control required as="select" value={this.props.budgetName} onChange={this.handleBudgetChange}>
+                      <option>Choose a Category...</option>
+                      <option value="Auto & Transport">Auto & Transport</option>
+                      <option value="Bills & Utilities">Bills & Utilities</option>
+                      <option value="Business Services">Business Services</option>
+                      <option value="Education">Education</option>
+                      <option value="Entertainment">Entertainment</option>
+                      <option value="Food & Dining">Food & Dining</option>
+                      <option value="Gifts & Donations">Gifts & Donations</option>
+                      <option value="Health & Fitness">Health & Fitness</option>
+                      <option value="Home">Home</option>
+                      <option value="Investments">Investments</option>
+                      <option value="Misc Expenses">Misc Expenses</option>
+                      <option value="Personal Care">Personal Care</option>
+                      <option value="Pets">Pets</option>
+                      <option value="Shopping">Shopping</option>
+                      <option value="Taxes">Taxes</option>
+                      <option value="Travel">Travel</option>
+                      <option value="Uncategorized">Uncategorized</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Form.Label className="create-budget-modal-labels">How Often Will This Happen?</Form.Label>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Check type="radio" label="Every Month" />
+                </Col>
+                <Col>
+                  <Form.Check type="radio" label="Every Week" />
+                </Col>
+              </Row>
+              <br></br>
+              <Row>
+                <Col>
+                  <Form.Label className="create-budget-modal-labels">Amount Allocated: </Form.Label>
+                </Col>
+                <Col>
+                  <Form.Control placeholder="$" onChange={this.handleAmountChange}></Form.Control>
+                  {this.state.amountError ? (
+                    <Form.Text style={{color: 'red'}}>
+                      Please enter a valid amount
+                    </Form.Text>
+                  ): null
+                  }
+                </Col>
+              </Row>
+            </div>
+            <br></br>
+            <Button className="float-right" variant="success" type="submit">Submit</Button>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+        </Modal.Footer>
+    </Modal>
+    )
   }
 }
 

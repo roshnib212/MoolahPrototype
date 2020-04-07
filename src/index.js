@@ -12,16 +12,18 @@ import LoanSummaryPage from './components/LoanSummaryPage.js';
 import LoanDetailsPage from './components/LoanDetailsPage.js';
 import LoanRepaymentPage from './components/LoanRepaymentPage.js';
 import LoanForgivenessPage from './components/LoanForgivenessPage.js';
+import history from './components/history.js';
+
 
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
 
 ReactDOM.render(
-  <Router>
+  <Router history={history}>
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
       <Switch>

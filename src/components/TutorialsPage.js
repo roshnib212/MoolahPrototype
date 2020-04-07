@@ -12,7 +12,7 @@ class TutorialsPage extends React.Component{
       <div style={{backgroundColor:'#DFF3F7'}}>
         <MoolahNavBar />
         <br></br>
-        <h2 style={{paddingLeft: '600px', paddingBottom: '100px', backgroundColor: ""}}>Financial Tutorials</h2>
+        <h2 className="text-center">Financial Tutorials</h2>
         <div style={{backgroundColor:'#DFF3F7', paddingRight:'200px', paddingLeft: '200px', display: 'grid', gridTemplateColumns: '500px 500px',
         gridGap: '20px', borderRadius: '5px', columnCount: 2}}>
 
