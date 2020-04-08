@@ -8,6 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Redirect } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import history from './history.js';
+
 
 class LoginPage extends React.Component {
 
@@ -40,7 +42,7 @@ class LoginPage extends React.Component {
   }
   renderRedirect = () => {
     if(this.state.redirectLogin){
-      return <Redirect to="/profile" />
+      return history.push('/profile', { username: this.state.username });
     }
     else if(this.state.redirectCreate){
       return <Redirect to="/register" />
