@@ -384,7 +384,7 @@ class NewServicerModal extends React.Component{
                   <Form.Label>Password</Form.Label>
               </Col>
               <Col>
-                <Form.Control placeholder="Enter Password" onChange={this.handleServicerPasswordChange}></Form.Control>
+                <Form.Control placeholder="Enter Password" type="password" onChange={this.handleServicerPasswordChange}></Form.Control>
               </Col>
             </Row>
             <Row>
@@ -479,7 +479,7 @@ class NewLenderModal extends React.Component{
                   <Form.Label>Password</Form.Label>
               </Col>
               <Col>
-                <Form.Control placeholder="Enter Password" onChange={this.handleLenderPasswordChange}></Form.Control>
+                <Form.Control placeholder="Enter Password" type="password" onChange={this.handleLenderPasswordChange}></Form.Control>
               </Col>
             </Row>
             <Row>
