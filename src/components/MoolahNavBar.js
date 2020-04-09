@@ -32,10 +32,6 @@ class MoolahNavBar extends React.Component{
            </NavDropdown>
            <Nav.Link href="/tutorials">Tutorials</Nav.Link>
          </Nav>
-         <Form inline>
-           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-           <Button variant="dark">Search</Button>
-         </Form>
         </Navbar>
       </div>
     );
