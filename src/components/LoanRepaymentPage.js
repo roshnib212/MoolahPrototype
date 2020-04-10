@@ -17,7 +17,7 @@ const initialState = {
 	accountNum: "",
 	accountName: "",
 
-	addModalShow: false,
+  addModalShow: false,
 }
 
 class ConfirmationModal extends React.Component{
@@ -50,47 +50,60 @@ class ConfirmationModal extends React.Component{
 		}
 	}
 
-
-
 	render(){
 		return (
 			<div className="App">
 				<Container>
 					<Row>
 						<Col md={12}>
-							<Button bsStyle="success" className='btn-block' onClick={this.showModal}>Make Payment</Button>
-		 <Modal show={this.state.show} onHide={this.hideModal} aria-labelledby='ModalHeader'>
-			<div> {this.renderRedirect()} </div>
-			 <Modal.Header closeButton>
-			   <Modal.Title id='ModalHeader'>Plase Confirm Payment Information</Modal.Title>
-			 </Modal.Header>
-			 <Modal.Body>
-				<div>
-				<p>
-					Payment Amount: {this.props.formData.amount}
-					<br/>
-					Payment Date: {moment(this.props.formData.date).format("YYYY-MM-DD")}
-					<br/>
-					Account Type: {this.props.formData.accountType}
-					<br/>
-					Routing Number: {this.props.formData.routingNum}
-					<br/>
-					Institution Name: {this.props.formData.institutionName}
-					<br/>
-					Account Number: {this.props.formData.accountNum}
-					<br/>
-					Account Name: {this.props.formData.accountName}
-				</p>
-				</div>
-			 </Modal.Body>
-			 <Modal.Footer>
-			   <button className='btn btn-primary' onClick={this.hideModal}>Confirm</button>
-			 </Modal.Footer>
-                 </Modal>
-             </Col>
-           </Row>
-        </Container>
-        </div>
+							<Button 
+								bsStyle="success" 
+								className='btn-primary' 
+								onClick={this.showModal}>Make Payment
+							</Button>
+		 					
+							<Modal 
+								show={this.state.show} 
+								onHide={this.hideModal} 
+								aria-labelledby='ModalHeader'>
+								<div> {this.renderRedirect()} </div>
+			 					<Modal.Header closeButton>
+			   						<Modal.Title 
+										id='ModalHeader'>Plase Confirm Payment Information
+									</Modal.Title>
+			 					</Modal.Header>
+			 				
+							<Modal.Body>
+								<div>
+								<p>
+								Payment Amount: {this.props.formData.amount}
+								<br/>
+								Payment Date: {moment(this.props.formData.date).format("YYYY-MM-DD")}
+								<br/>
+								Account Type: {this.props.formData.accountType}
+								<br/>
+								Routing Number: {this.props.formData.routingNum}
+								<br/>
+								Institution Name: {this.props.formData.institutionName}
+								<br/>
+								Account Number: {this.props.formData.accountNum}
+								<br/>
+								Account Name: {this.props.formData.accountName}
+								</p>
+								</div>
+			 				</Modal.Body>
+
+			 				<Modal.Footer>
+			   					<button 
+									className='btn btn-primary' 
+									onClick={this.hideModal}>Confirm
+								</button>
+			 				</Modal.Footer>
+                 		</Modal>
+             		</Col>
+           		</Row>
+        	</Container>
+		</div>
     );
   }
 }
@@ -112,8 +125,8 @@ class LoanRepaymentPage extends React.Component{
 	handleAmountChange(event) {
 		this.setState({amount: event.target.value});
 	}
-	handleDateChange(event) {
-		this.setState({date: event.target.value});
+	handleDateChange = date => {
+		this.setState({date: date});
 	}
 	handleAccountTypeChange(event) {
 		this.setState({accountType: event.target.value});
@@ -147,25 +160,30 @@ class LoanRepaymentPage extends React.Component{
 	confirmationModalClose = () => {
 		this.setState({addModalShow: false});
 	};
-	
+
 	render() {
 		return(
 			<div style={{backgroundColor:'#DFF3F7', height: '1800px', overflow: 'auto', paddingBottom: '75px'}} className="text-center">
 			<MoolahNavBar />
+			<br></br>
 			<h2>Loan Repayment</h2>
 			<Col>
-			<Form>
+			<Form className="repayment-page">
 
+				<br></br>
 				<Form.Group controlID="amount">
 					<Form.Label>Payment Amount</Form.Label>
 					<Form.Control
 						required
-						type="text" placeholder = "0.0"
+						size="sm"
+						type="text" 
+						placeholder = "0.0"
 						onChange={this.handleAmountChange} />
 				</Form.Group>
 
 				<Form.Group countrolID="date">
 					<Form.Label>Payment Date</Form.Label>
+					<br></br>
 					<DatePicker
 						id="date-picker"
 						selected={this.state.date}
@@ -174,10 +192,7 @@ class LoanRepaymentPage extends React.Component{
 
 				<Form.Group countrolID="accountType">
 					<Form.Label>Account Type</Form.Label>
-					<Form.Control 
-						as="select" 
-						selected={this.state.accountType} 
-						onChange={this.handleAccountTypeChange}>
+					<Form.Control as="select" selected={this.state.accountType} onChange={this.handleAccountTypeChange}>
 						<option>Choose...</option>
 						<option>Checking</option>
 						<option>Savings</option>
@@ -216,18 +231,17 @@ class LoanRepaymentPage extends React.Component{
 						onChange={this.handleAccountNameChange} />
 				</Form.Group>
 
+				<br></br>
 			</Form>
 			</Col>
 			<ConfirmationModal
 				formData={this.state}
 				show={this.state.addModalShow}
 				onHide={this.confirmationModalClose}
-				
+
 			/>
 			</div>
 		);
   }
 }
-
 export default LoanRepaymentPage;
-
