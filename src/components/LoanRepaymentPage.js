@@ -175,7 +175,6 @@ class LoanRepaymentPage extends React.Component{
 					<Form.Label>Payment Amount</Form.Label>
 					<Form.Control
 						required
-						size="sm"
 						type="text" 
 						placeholder = "0.0"
 						onChange={this.handleAmountChange} />
@@ -187,12 +186,14 @@ class LoanRepaymentPage extends React.Component{
 					<DatePicker
 						id="date-picker"
 						selected={this.state.date}
+						size="lg"
 						onChange={this.handleDateChange} />
 				</Form.Group>
 
 				<Form.Group countrolID="accountType">
 					<Form.Label>Account Type</Form.Label>
 					<Form.Control as="select" selected={this.state.accountType} onChange={this.handleAccountTypeChange}>
+
 						<option>Choose...</option>
 						<option>Checking</option>
 						<option>Savings</option>
@@ -202,6 +203,7 @@ class LoanRepaymentPage extends React.Component{
 				<Form.Group controlID="routingNum">
 					<Form.Label>Routing Number</Form.Label>
 					<Form.Control
+
 						required
 						type="text" placeholder = "xxxxxxxxx"
 						onChange={this.handleRoutingNumChange} />
@@ -210,6 +212,7 @@ class LoanRepaymentPage extends React.Component{
 				<Form.Group controlID="institutionName">
 					<Form.Label>Institution Name</Form.Label>
 					<Form.Control
+
 						required
 						type="text" placeholder = "Bank of Zoomers"
 						onChange={this.handleInstitutionNameChange} />
@@ -218,6 +221,7 @@ class LoanRepaymentPage extends React.Component{
 				<Form.Group controlID="accountNum">
 					<Form.Label>Account Number</Form.Label>
 					<Form.Control
+
 						required
 						type="text" placeholder = "xxxxxxxx"
 						onChange={this.handleAccountNumChange} />
@@ -226,6 +230,7 @@ class LoanRepaymentPage extends React.Component{
 				<Form.Group controlID="accountName">
 					<Form.Label>Account Name</Form.Label>
 					<Form.Control
+
 						required
 						type="text" placeholder = "Bob Zoof"
 						onChange={this.handleAccountNameChange} />
