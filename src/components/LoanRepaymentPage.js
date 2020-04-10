@@ -17,7 +17,7 @@ const initialState = {
 	accountNum: "",
 	accountName: "",
 
-  addModalShow: false,
+	addModalShow: false,
 }
 
 class ConfirmationModal extends React.Component{
@@ -50,6 +50,8 @@ class ConfirmationModal extends React.Component{
 		}
 	}
 
+
+
 	render(){
 		return (
 			<div className="App">
@@ -66,7 +68,6 @@ class ConfirmationModal extends React.Component{
 				<div>
 				<p>
 					Payment Amount: {this.props.formData.amount}
-
 					<br/>
 					Payment Date: {moment(this.props.formData.date).format("YYYY-MM-DD")}
 					<br/>
@@ -173,7 +174,10 @@ class LoanRepaymentPage extends React.Component{
 
 				<Form.Group countrolID="accountType">
 					<Form.Label>Account Type</Form.Label>
-					<Form.Control as="select" selected={this.state.accountType} onChange={this.handleAccountTypeChange}>
+					<Form.Control 
+						as="select" 
+						selected={this.state.accountType} 
+						onChange={this.handleAccountTypeChange}>
 						<option>Choose...</option>
 						<option>Checking</option>
 						<option>Savings</option>
@@ -185,7 +189,7 @@ class LoanRepaymentPage extends React.Component{
 					<Form.Control
 						required
 						type="text" placeholder = "xxxxxxxxx"
-						onChange={this.handleAmountChange} />
+						onChange={this.handleRoutingNumChange} />
 				</Form.Group>
 
 				<Form.Group controlID="institutionName">
@@ -193,7 +197,7 @@ class LoanRepaymentPage extends React.Component{
 					<Form.Control
 						required
 						type="text" placeholder = "Bank of Zoomers"
-						onChange={this.handleAmountChange} />
+						onChange={this.handleInstitutionNameChange} />
 				</Form.Group>
 
 				<Form.Group controlID="accountNum">
@@ -201,7 +205,7 @@ class LoanRepaymentPage extends React.Component{
 					<Form.Control
 						required
 						type="text" placeholder = "xxxxxxxx"
-						onChange={this.handleAmountChange} />
+						onChange={this.handleAccountNumChange} />
 				</Form.Group>
 
 				<Form.Group controlID="accountName">
@@ -209,7 +213,7 @@ class LoanRepaymentPage extends React.Component{
 					<Form.Control
 						required
 						type="text" placeholder = "Bob Zoof"
-						onChange={this.handleAmountChange} />
+						onChange={this.handleAccountNameChange} />
 				</Form.Group>
 
 			</Form>
