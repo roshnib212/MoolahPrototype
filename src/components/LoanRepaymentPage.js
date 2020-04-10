@@ -163,7 +163,7 @@ class LoanRepaymentPage extends React.Component{
 
 	render() {
 		return(
-			<div style={{backgroundColor:'#DFF3F7', height: '1800px', overflow: 'auto', paddingBottom: '75px'}} className="text-center">
+			<div style={{backgroundColor:'#DFF3F7', height: '825px', overflow: 'auto', paddingBottom: '75px'}} className="text-center">
 			<MoolahNavBar />
 			<br></br>
 			<h2>Loan Repayment</h2>
