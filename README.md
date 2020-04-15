@@ -1,8 +1,9 @@
-# SWEN444Prototype
+# MoolahPrototype
 
 
-npm install
+Link to deployment: https://moolah-prototype.herokuapp.com/
 
-
-
-npm start
+If link does not work, you can run it locally using these steps!
+  1. npm install 
+  2. npm start
+  3. see it running at http://localhost:3000
