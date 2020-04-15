@@ -53,3 +53,8 @@ ol, ul {
   margin: 0 auto;
   width:80% /* value of your choice which suits your alignment */
 }
+
+.repayment-page {
+	margin: 0 auto;
+	width: 35%;
+}
